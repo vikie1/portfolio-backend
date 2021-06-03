@@ -2,25 +2,21 @@ package io.github.vikie1.portfolio.articles;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 
-import lombok.Getter;
-import lombok.Setter;
+import org.hibernate.annotations.Type;
 
 @Entity
 public class Articles {
     
-    @Id @Getter @Setter
+    @Id
     private String name;
     private String imgURL;
     private String description;
-    private String url;
+    private String topic; 
+    @Lob @Type(type = "org.hibernate.type.TextType")
+    private String fullArticle;
 
-    /**
-     * @return the url
-     */
-    public String getUrl() {
-        return url;
-    }
     /**
      * @return the imgURL
      */
@@ -35,12 +31,6 @@ public class Articles {
     }
 
     /**
-     * @param url the url to set
-     */
-    public void setUrl(String url) {
-        this.url = url;
-    }
-    /**
      * @param description the description to set
      */
     public void setDescription(String description) {
@@ -51,5 +41,43 @@ public class Articles {
      */
     public void setImgURL(String imgURL) {
         this.imgURL = imgURL;
+    }
+
+    /**
+     * @return the fullArticle
+     */
+    public String getFullArticle() {
+        return fullArticle;
+    }
+    /**
+     * @param fullArticle the fullArticle to set
+     */
+    public void setFullArticle(String fullArticle) {
+        this.fullArticle = fullArticle;
+    }
+
+    /**
+     * @return the name
+     */
+    public String getName() {
+        return name;
+    }
+    /**
+     * @return the topic
+     */
+    public String getTopic() {
+        return topic;
+    }
+    /**
+     * @param name the name to set
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+    /**
+     * @param topic the topic to set
+     */
+    public void setTopic(String topic) {
+        this.topic = topic;
     }
 }

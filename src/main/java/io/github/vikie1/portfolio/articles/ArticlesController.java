@@ -15,25 +15,25 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 
 @RestController
-@RequestMapping("/api/")
+@RequestMapping("/api")
 public class ArticlesController {
     
     @Autowired
     ArticleService articleService;
 
-    @RequestMapping(value="/articles", method=RequestMethod.GET)
+    @RequestMapping(value="/blog", method=RequestMethod.GET)
     public HashMap<String, List<Articles>> requestArticles() {
         HashMap<String, List<Articles>> articles = new HashMap<>();
-        articles.put("articles", articleService.getArticles());
+        articles.put("blog", articleService.getArticles());
         return articles;
     }
     
-    @PostMapping(value="/articles")
+    @PostMapping(value="/blog")
     public void postArticle(@RequestBody Articles entity) {
         articleService.addArticles(entity);
     }
     
-    @DeleteMapping(value = "/articles/{param}")
+    @DeleteMapping(value = "/blog/{param}")
     public void deleteArticle(@PathVariable String param) {
         articleService.deleteArticle(param);
     }
