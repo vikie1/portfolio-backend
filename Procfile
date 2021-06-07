@@ -1,1 +1,1 @@
-web: ./mvnw spring-boot:run
+web: java -jar target/portfolio-1.0.0-SNAPSHOT.jar --port $PORT
