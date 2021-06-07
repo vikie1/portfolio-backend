@@ -1,1 +1,1 @@
-web: java -jar target/rest-service-0.0.1-SNAPSHOT.jar --port $PORT
+web: ./mvnw spring-boot:run
