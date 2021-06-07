@@ -1,11 +1,12 @@
 package io.github.vikie1.portfolio;
 
-import org.springframework.web.bind.annotation.RestController;
-
 import java.util.HashMap;
 
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
 
 
 @RestController
@@ -17,5 +18,11 @@ public class AliveCheckAPI {
         status.put("status", "alive");
         return status;
     }
+
+    @GetMapping(value="/")
+    public String getMethodName() {
+        return new String("hi");
+    }
+    
     
 }

@@ -7,20 +7,39 @@ import javax.persistence.Id;
 @Entity
 public class ToDoList {
 
-    //Constructor for creating lists
-    public ToDoList(String name, String time){
+    // Constructor for creating lists
+    public ToDoList(String name, String time, String user) {
         super();
         this.time = time;
         this.name = name;
+        this.user = user;
     }
 
-    //Constructor for reading lists
-    public ToDoList(){}
+    /**
+     * @return the user
+     */
+    public String getUser() {
+        return user;
+    }
+
+    /**
+     * @param user the user to set
+     */
+    public void setUser(String user) {
+        this.user = user;
+    }
+
+    // Constructor for reading lists
+    public ToDoList() {
+    }
 
     private String name;
 
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     private Long id;
+
+    private String user;
 
     private String time;
 
