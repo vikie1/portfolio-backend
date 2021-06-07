@@ -8,25 +8,25 @@ import javax.persistence.Id;
 public class ToDoList {
 
     // Constructor for creating lists
-    public ToDoList(String name, String time, String user) {
+    public ToDoList(String name, String time, String username) {
         super();
         this.time = time;
         this.name = name;
-        this.user = user;
+        this.username = username;
     }
 
     /**
-     * @return the user
+     * @return the username
      */
-    public String getUser() {
-        return user;
+    public String getusername() {
+        return username;
     }
 
     /**
-     * @param user the user to set
+     * @param username the username to set
      */
-    public void setUser(String user) {
-        this.user = user;
+    public void setusername(String username) {
+        this.username = username;
     }
 
     // Constructor for reading lists
@@ -39,7 +39,7 @@ public class ToDoList {
     @GeneratedValue
     private Long id;
 
-    private String user;
+    private String username;
 
     private String time;
 
