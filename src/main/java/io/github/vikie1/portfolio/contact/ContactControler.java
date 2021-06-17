@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.github.vikie1.portfolio.mail.SendMailService;
+
 
 @RestController
 @CrossOrigin(origins = "https://victormwangi.netlify.app")
@@ -17,8 +19,12 @@ public class ContactControler {
     @Autowired
     ContactService contactService;
 
+    @Autowired
+    SendMailService sendMailService;
+
     @PostMapping(value="/api/contact")
     public List<String> postMethodName(@RequestBody Contact entity) {
+        sendMailService.send(entity);
         List<String> reply = contactService.addContact(entity);
         return reply;
     }
