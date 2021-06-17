@@ -1,15 +1,18 @@
 package io.github.vikie1.portfolio.mail;
 
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.EnableAsync;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import io.github.vikie1.portfolio.contact.Contact;
 
-@Component
+@Service
 @EnableAsync
 public class SendMail {
     @Autowired
@@ -19,13 +22,21 @@ public class SendMail {
     public void sendVisitorEmail(Contact contact) {
         String email = contact.getEmail();
         String name = contact.getName();
-        SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
-        simpleMailMessage.setTo(email);
-        simpleMailMessage.setSubject("Auto Reply for Contacting Victor Mwangi");
-        simpleMailMessage
-                .setText("Thank you " + name + " for making contact to Victor Mwangi in victormwangi.netlify.app. \n"
-                        + "This message is meant to acknowledge reception of the details you sent.\n"
-                        + "I'll review the data and get back to you");
+        MimeMessage mimeMessage = javaMailSender.createMimeMessage();
+        MimeMessageHelper mimeMessageHelper;
+        try {
+            mimeMessageHelper = new MimeMessageHelper(mimeMessage);
+            mimeMessageHelper.setTo(email);
+            mimeMessageHelper.setSubject("Auto Reply for Contacting Victor Mwangi");
+            mimeMessageHelper
+                    .setText("Thank you " + name + " for making contact to Victor Mwangi in victormwangi.netlify.app. <br>"
+                            + "This message is meant to acknowledge reception of the details you sent. <br>"
+                            + "I'll review the data and get back to you. <br> <br> HAVE A GREAT DAY.", true);
+        } catch (MessagingException e) {
+            //Auto-generated catch block
+            e.printStackTrace();
+        }
+        javaMailSender.send(mimeMessage);
     }
 
     @Async
@@ -34,10 +45,26 @@ public class SendMail {
         String name = contact.getName();
         String subject = contact.getSubject();
         String message = contact.getMessage();
-        SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
-        simpleMailMessage.setTo("mwangivikie@gmail.com");
-        simpleMailMessage.setSubject("New Contact At PortFolio");
-        simpleMailMessage.setText("Received a new email: <br>" + "From: " + sender + "Name: " + name + "Subject: "
-                + subject + "Message: " + message + "<br> <br> GOOD LUCK WITH YOUR NEW CLIENT!");
+        MimeMessage mimeMessage = javaMailSender.createMimeMessage();
+        MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage, "utf-8");
+        try {
+            mimeMessageHelper.setTo("mwangivikie@gmail.com");
+            mimeMessageHelper.setSubject("New Contact At PortFolio");
+            mimeMessageHelper.setText("Received a new email: <br>" + "From: " + sender + "<br>Name: " + name + "<br>Subject: "
+                    + subject + "<br>Message: " + message + "<br> <br> GOOD LUCK WITH YOUR NEW CLIENT!", true);
+        } catch (MessagingException e) {
+            // Auto-generated catch block
+            e.printStackTrace();
+        }
+        javaMailSender.send(mimeMessage);
     }
+
+    /**
+     * @param javaMailSender
+     */
+    @Autowired
+    public SendMail(JavaMailSender javaMailSender) {
+        this.javaMailSender = javaMailSender;
+    }
+    public SendMail() {}
 }

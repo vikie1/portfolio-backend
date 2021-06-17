@@ -12,11 +12,10 @@ public class SendMailService {
 
     public void send(Contact contact) {
         try {
-            
-        sendMail.sendVisitorEmail(contact);
-        sendMail.sendMyMail(contact);
+            sendMail.sendVisitorEmail(contact);
+            sendMail.sendMyMail(contact);
         } catch (Exception e) {
-            //Thandle mail exception
+            //handle exception
             return;
         }
     }
