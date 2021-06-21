@@ -11,7 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@CrossOrigin(origins = "https://victormwangi.netlify.app")
+//@CrossOrigin(origins = "https://victormwangi.netlify.app")
+@CrossOrigin(origins = "http://localhost:3000")
 public class AliveCheckAPI {
     
     @RequestMapping(value="/hi", method=RequestMethod.GET)

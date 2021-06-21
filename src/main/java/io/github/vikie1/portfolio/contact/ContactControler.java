@@ -13,7 +13,8 @@ import io.github.vikie1.portfolio.mail.SendMailService;
 
 
 @RestController
-@CrossOrigin(origins = "https://victormwangi.netlify.app")
+//@CrossOrigin(origins = "https://victormwangi.netlify.app")
+@CrossOrigin(origins = "http://localhost:3000/")
 public class ContactControler {
     
     @Autowired
