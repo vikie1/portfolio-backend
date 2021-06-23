@@ -32,10 +32,9 @@ public class ArticlesController {
         return articles;
     }
     
-    @GetMapping(value="/blog/{name}")
-    public List<String> getMethodName(@PathVariable String name) {
-        String replacedName = name.replace('-', ' ');
-        List<String> articles = articleService.getSingleArticle(replacedName);
+    @GetMapping(value="/blog/{id}")
+    public List<Articles> getMethodName(@PathVariable String id) {
+        List<Articles> articles = articleService.getSingleArticle(id);
         return articles;
     }
     
