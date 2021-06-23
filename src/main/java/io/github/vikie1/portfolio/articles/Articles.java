@@ -12,7 +12,7 @@ public class Articles {
 
     @Id
     @GeneratedValue
-    private long id;
+    private int id;
     private String name;
     private String imgURL;
     private String description;
