@@ -33,7 +33,7 @@ public class ArticlesController {
     }
     
     @GetMapping(value="/blog/{id}")
-    public List<Articles> getMethodName(@PathVariable String id) {
+    public List<Articles> getMethodName(@PathVariable int id) {
         List<Articles> articles = articleService.getSingleArticle(id);
         return articles;
     }
@@ -44,7 +44,7 @@ public class ArticlesController {
     }
     
     @DeleteMapping(value = "/blog/{param}")
-    public void deleteArticle(@PathVariable String param) {
+    public void deleteArticle(@PathVariable int param) {
         articleService.deleteArticle(param);
     }
 }

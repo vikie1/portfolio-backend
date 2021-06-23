@@ -22,12 +22,12 @@ public class ArticleService {
         return articles;
     }
 
-    public List<Articles> getSingleArticle(String name){
+    public List<Articles> getSingleArticle(int name){
         List<Articles> articles = new ArrayList<>();
         articles.add(articlesRepo.findById(name).orElse(null));
         return articles;
     }
-    public void deleteArticle(String id) {
+    public void deleteArticle(int id) {
         articlesRepo.deleteById(id);
     }
 }
