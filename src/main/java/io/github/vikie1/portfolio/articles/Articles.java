@@ -1,6 +1,7 @@
 package io.github.vikie1.portfolio.articles;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 
@@ -8,13 +9,16 @@ import org.hibernate.annotations.Type;
 
 @Entity
 public class Articles {
-    
+
     @Id
+    @GeneratedValue
+    private long id;
     private String name;
     private String imgURL;
     private String description;
-    private String topic; 
-    @Lob @Type(type = "org.hibernate.type.TextType")
+    private String topic;
+    @Lob
+    @Type(type = "org.hibernate.type.TextType")
     private String fullArticle;
 
     /**
@@ -23,6 +27,21 @@ public class Articles {
     public String getImgURL() {
         return imgURL;
     }
+
+    /**
+     * @return the id
+     */
+    public long getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(long id) {
+        this.id = id;
+    }
+
     /**
      * @return the description
      */
