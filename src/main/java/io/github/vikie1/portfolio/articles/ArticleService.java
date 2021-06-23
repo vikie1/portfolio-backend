@@ -1,7 +1,9 @@
 package io.github.vikie1.portfolio.articles;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,9 +24,10 @@ public class ArticleService {
         return articles;
     }
 
-    public List<Articles> getSingleArticle(String name){
-        List<Articles> articles = new ArrayList<>();
-        articles.addAll(articlesRepo.findByName(name));
+    public List<String> getSingleArticle(String name){
+        List<String> articles = new ArrayList<>();
+        articles = Arrays.stream(name.split(" ")).collect(Collectors.toList());
+        //articles.addAll(articlesRepo.findByName(name));
         return articles;
     }
     public void deleteArticle(String id) {
