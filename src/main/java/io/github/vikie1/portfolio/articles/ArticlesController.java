@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@CrossOrigin(origins = "https://victormwangi.netlify.app")
+//@CrossOrigin(origins = "https://victormwangi.netlify.app")
 @RequestMapping("/api")
 public class ArticlesController {
     

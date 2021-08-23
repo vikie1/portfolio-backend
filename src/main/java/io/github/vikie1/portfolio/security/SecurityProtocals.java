@@ -12,11 +12,15 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.crypto.scrypt.SCryptPasswordEncoder;
+import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 @Configuration
 @EnableWebSecurity
-@CrossOrigin(origins = "https://victormwangi.netlify.app")
+//@CrossOrigin(origins = "https://victormwangi.netlify.app")
 public class SecurityProtocals extends WebSecurityConfigurerAdapter {
 
     @Autowired
@@ -24,8 +28,8 @@ public class SecurityProtocals extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        //http.csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
-        http.csrf().disable();
+        http.csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
+        //http.csrf().disable();
         http.authorizeRequests()
             .antMatchers(HttpMethod.POST, "/api/projects").hasRole("ROOT")
             .antMatchers(HttpMethod.DELETE, "/api/projects").hasRole("ROOT")
@@ -47,8 +51,15 @@ public class SecurityProtocals extends WebSecurityConfigurerAdapter {
     }
 
     @Bean
-    public PasswordEncoder getPasswordEncoder() {
-        PasswordEncoder encoder = new SCryptPasswordEncoder();
-        return encoder;
+    public PasswordEncoder getPasswordEncoder() { return new SCryptPasswordEncoder(); }
+
+    @Bean
+    public WebMvcConfigurer corsConfigurer() {
+        return new WebMvcConfigurer() {
+            @Override
+            public void addCorsMappings(CorsRegistry registry) {
+                registry.addMapping("/**").allowedOrigins("*").allowedMethods("GET", "POST", "PUT", "DELETE");
+            }
+        };
     }
 }

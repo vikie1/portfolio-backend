@@ -13,7 +13,7 @@ import io.github.vikie1.portfolio.mail.SendMailService;
 
 
 @RestController
-@CrossOrigin(origins = "https://victormwangi.netlify.app")
+//@CrossOrigin(origins = "https://victormwangi.netlify.app")
 //@CrossOrigin(origins = "http://localhost:3000/")
 public class ContactControler {
     
@@ -26,8 +26,7 @@ public class ContactControler {
     @PostMapping(value="/api/contact")
     public List<String> postMethodName(@RequestBody Contact entity) {
         sendMailService.send(entity);
-        List<String> reply = contactService.addContact(entity);
-        return reply;
+        return contactService.addContact(entity);
     }
     
     @DeleteMapping(value = "/api/contact")
