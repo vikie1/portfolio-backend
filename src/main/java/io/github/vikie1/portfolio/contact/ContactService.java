@@ -23,6 +23,8 @@ public class ContactService {
         return reply;
     }
 
+    public void deleteContact(int id){ contactRepo.deleteById(id); }
+
     public void clear(){
         contactRepo.deleteAll();
     }

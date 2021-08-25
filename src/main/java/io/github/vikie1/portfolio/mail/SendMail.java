@@ -27,9 +27,11 @@ public class SendMail {
         try {
             mimeMessageHelper = new MimeMessageHelper(mimeMessage);
             mimeMessageHelper.setTo(email);
+
+            //I'm just going to hardcode everything for now because am very hardworking
             mimeMessageHelper.setSubject("Auto Reply for Contacting Victor Mwangi");
             mimeMessageHelper
-                    .setText("Thank you " + name + " for making contact to Victor Mwangi in victormwangi.netlify.app. <br>"
+                    .setText("Thank you " + name + " for making contact to Victor Mwangi in <a href=\"victormwangi.netlify.app\"></a>. <br>"
                             + "This message is meant to acknowledge reception of the details you sent. <br>"
                             + "I'll review the data and get back to you. <br> <br> HAVE A GREAT DAY.", true);
         } catch (MessagingException e) {
@@ -59,12 +61,5 @@ public class SendMail {
         javaMailSender.send(mimeMessage);
     }
 
-    /**
-     * @param javaMailSender
-     */
-    @Autowired
-    public SendMail(JavaMailSender javaMailSender) {
-        this.javaMailSender = javaMailSender;
-    }
     public SendMail() {}
 }

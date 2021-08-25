@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html
+        lang="en"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>This is the admin panel</title>
+    <link
+      rel="canonical"
+      href="https://getbootstrap.com/docs/5.0/examples/album/"
+    />
+    <link href="/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/adminBloglist.js"></script>
+  </head>
+  <body>
+    <header>
+      <ul>
+        <li class="item1"><a th:href="@{/admin/signUp}">Add a new user</a></li>
+        <li class="item2"><a th:href="@{/admin/blog/new}">Create a blog</a></li>
+        <li class="item3"><a th:href="@{/admin/projects/new}">Add projects</a></li>
+        <!-- <li class="item4"></li>
+        <li class="item5"></li> -->
+      </ul>
+    </header>
+    <main>
+        <div class="album py-5 bg-light">
+        <div class="container">
+          <div
+            class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3"
+            id="articlesContainer"
+          >
+            <script type="text/javascript">
+              function name() {
+                getArticles();
+              }
+              window.onload = name();
+            </script>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

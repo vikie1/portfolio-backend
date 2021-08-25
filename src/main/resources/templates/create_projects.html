@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html
+        lang="en"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="/js/autogrowtextfield.js"></script>
+</head>
+<body>
+<div>
+    <div>
+        <script src="/js/upload.js"></script>
+        <form
+                method="post"
+                enctype="multipart/form-data"
+                id="uploadForm"
+                onsubmit="handleFileSubmit(event)"
+        >
+            <div style="border: solid; width: max-content;">
+                <p>choose picture that will appear in blog preview</p>
+                <input type="file" id="fileu" name="files[]" />
+            </div>
+            <input type="submit" value="Upload picture" name="submit" />
+        </form>
+
+        <p id="data"></p>
+    </div>
+    <form
+            id="myForm"
+            role="form"
+            th:action="@{/admin/projects/new}"
+            th:method="post"
+            th:object="${projects}"
+    >
+        <div>
+            <input
+                    type="text"
+                    name="name"
+                    id="nameInput"
+                    onkeyup="populatePreviewH1(this.id)"
+                    placeholder="Enter project name here"
+                    field="*{name}"
+            />
+        </div>
+        <div>
+            <textarea
+                    name="description"
+                    id="descriptionInput"
+                    cols="50"
+                    rows="10"
+                    onkeyup="AutoGrowTextArea(this)"
+                    placeholder="Enter description here"
+                    field="*{description}"
+            ></textarea>
+        </div>
+        <div>
+            <input
+                    type="text"
+                    name="title"
+                    id="topicInput"
+                    placeholder="Enter the title of the project"
+                    field="*{title}"
+            />
+        </div>
+        <div>
+            <input
+                    type="text"
+                    name="url"
+                    id="url"
+                    placeholder="Enter the url of the project"
+                    field="*{url}"
+            />
+        </div>
+        <div>
+            <input type="hidden" id="imgURL" name="imgUrl" field="*{imgUrl}" />
+        </div>
+        <input
+                type="hidden"
+                name="${_csrf.parameterName}"
+                value="${_csrf.token}"
+        />
+        <input type="submit" value="submit blog" />
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:th="http://www.thymeleaf.org"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="/js/autogrowtextfield.js"></script>
+  </head>
+  <body>
+    <main>
+      <div>
+        <h2>This are tips you will need when creating the blog</h2>
+        <div>
+          <ul>
+            <li>
+              <strong>To bold text</strong>, use :
+              <code>&lt;Strong&gt; To bold text &lt;Strong/&gt;</code>.
+            </li>
+            <li>
+              <em>To italicize text</em>, use :
+              <code>&lt;em&gt;To italicize text&lt;em/&gt;</code>.
+            </li>
+            <li>
+              Citations, like - <cite> From Victor Mwangi</cite>, use :
+              <code>&lt;cite&gt; From Victor Mwangi &lt;cite/&gt;</code>.
+            </li>
+            <li>
+              <del>Deleted</del> text should use :
+              <code>&lt;del&gt; Deleted &lt;del/&gt;</code> and
+              <ins>inserted</ins> text should use :
+              <code>&lt;ins&gt; inserted &lt;ins/&gt;</code>.
+            </li>
+            <li>
+              Superscript <sup>text</sup> uses :
+              <code>&lt;sup&gt; text &lt;sup/&gt;</code> and subscript
+              <sub>text</sub> uses : <code>&lt;sub&gt; text &lt;sub/&gt;</code>.
+            </li>
+            <li>
+              <h2>To insert sub heading</h2>
+              use : <code>&lt;H2&gt; To insert sub heading &lt;H2/&gt;</code>
+              <p>
+                You can also use h3, h4, h5, h6, for smaller subheadings <br />
+                Don't use h1 or h7 and above
+              </p>
+            </li>
+            <li>
+              To insert... <br />
+              new line use : <code>To insert... &lt;br&gt; new line </code>
+            </li>
+            <li>
+              <p>This is paragraph 1</p>
+              use : <code>&lt;P&gt; This is paragraph 1 &lt;P/&gt;</code>
+              <p>This is paragraph 2</p>
+              use : <code>&lt;p&gt; This is paragraph 2 &lt;p/&gt;</code>
+              <p><br />A bigger gap for paragraph 3</p>
+              add : <code> &lt;br&gt; </code> that is :
+              <code
+                >&lt;p&gt; &lt;br&gt; A bigger gap for paragraph 3
+                &lt;p/&gt;</code
+              >
+              <p>1 <code>&lt;br&gt; </code> will skip 1 line</p>
+              <p>2 <code>&lt;br&gt; &lt;br&gt; </code> will skip 2 lines</p>
+              <p>
+                3 <code>&lt;br&gt; &lt;br&gt; &lt;br&gt;</code> will skip 3
+                lines etc...
+              </p>
+            </li>
+            <li>
+              <a href="https://victormwangi.netlify.app/">Insert a link</a> use
+              :
+              <code
+                >&lt;a href="https://victormwangi.netlify.app/" css={links} &gt; Insert a
+                link &lt;a/&gt;</code
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div>
+        <div>
+          <script src="/js/upload.js"></script>
+          <form
+            method="post"
+            enctype="multipart/form-data"
+            id="uploadForm"
+            onsubmit="handleFileSubmit(event)"
+          >
+            <div style="border: solid; width: max-content;">
+              <p>choose picture that will appear in blog preview</p>
+              <input type="file" id="fileu" name="files[]" />
+            </div>
+            <input type="submit" value="Upload picture" name="submit" />
+          </form>
+
+          <p id="data"></p>
+        </div>
+        <form
+          id="myForm"
+          role="form"
+          th:action="@{/admin/blog/new}"
+          th:method="post"
+          th:object="${articles}"
+        >
+          <div>
+            <input
+              type="text"
+              name="name"
+              id="nameInput"
+              onkeyup="populatePreviewH1(this.id)"
+              placeholder="Enter blog name here"
+              field="*{name}"
+            />
+          </div>
+          <div>
+            <textarea
+              name="description"
+              id="descriptionInput"
+              cols="70"
+              rows="10"
+              onkeyup="AutoGrowTextArea(this)"
+              placeholder="Enter a description of the blog here"
+              field="*{description}"
+            ></textarea>
+          </div>
+          <div>
+            <input
+              type="text"
+              name="topic"
+              id="topicInput"
+              placeholder="Enter the topic of your blog"
+              field="*{topic}"
+            />
+          </div>
+          <div>
+            <textarea
+              name="fullArticle"
+              id="fullArticleInput"
+              cols="150"
+              rows="15"
+              onkeyup="AutoGrowTextArea(this, this.id)"
+              placeholder="This is where you type your blog post"
+              field="*{fullArticle}"
+            ></textarea>
+          </div>
+          <div>
+            <input type="hidden" id="imgURL" name="imgURL" field="*{imgURL}" />
+          </div>
+          <input
+            type="hidden"
+            name="${_csrf.parameterName}"
+            value="${_csrf.token}"
+          />
+          <input type="submit" value="submit blog" />
+        </form>
+      </div>
+    </main>
+  </body>
+</html>

@@ -3,10 +3,7 @@ package io.github.vikie1.portfolio.contact;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import io.github.vikie1.portfolio.mail.SendMailService;
 
@@ -30,4 +27,7 @@ public class ContactControler {
     public void deleteContacts() {
         contactService.clear();
     }
+
+    @DeleteMapping(value = "/api/contact/{id}")
+    public void deleteContact(@PathVariable int id){ contactService.deleteContact(id); }
 }
