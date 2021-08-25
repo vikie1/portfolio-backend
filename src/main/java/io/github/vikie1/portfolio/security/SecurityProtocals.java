@@ -12,24 +12,20 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.crypto.scrypt.SCryptPasswordEncoder;
-import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 @Configuration
 @EnableWebSecurity
-//@CrossOrigin(origins = "https://victormwangi.netlify.app")
 public class SecurityProtocals extends WebSecurityConfigurerAdapter {
 
     @Autowired
     DataSource dataSource;
-
+    
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
-        //http.csrf().disable();
+        //http.csrf().csrfTokenRepository(csrfTokenRepository);
+        http.csrf().disable(); //disable csrf because i don't want cross domain csrf headache in spring boot
         http.authorizeRequests()
             .antMatchers(HttpMethod.POST, "/api/projects").hasRole("ROOT")
             .antMatchers(HttpMethod.DELETE, "/api/projects").hasRole("ROOT")
@@ -58,7 +54,7 @@ public class SecurityProtocals extends WebSecurityConfigurerAdapter {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/**").allowedOrigins("*").allowedMethods("GET", "POST", "PUT", "DELETE");
+                registry.addMapping("/**").allowedOrigins("*").allowedMethods("GET", "POST", "PUT", "DELETE").allowedHeaders("*");
             }
         };
     }

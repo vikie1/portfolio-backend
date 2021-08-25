@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-//@CrossOrigin(origins = "https://victormwangi.netlify.app")
 @RequestMapping("/api")
 public class ArticlesController {
     
@@ -33,9 +31,13 @@ public class ArticlesController {
     }
     
     @GetMapping(value="/blog/{id}")
-    public List<Articles> getMethodName(@PathVariable int id) {
-        List<Articles> articles = articleService.getSingleArticle(id);
-        return articles;
+    public HashMap<String, List<Articles>> getMethodName(@PathVariable int id) {
+        List<Articles> article = articleService.getSingleArticle(id);
+        List<Articles> relatedArticles = articleService.getRelatedArticles(id);
+        HashMap<String, List<Articles>> serveBlog = new HashMap<>();
+        serveBlog.put("currArticle", article);
+        serveBlog.put("blog", relatedArticles);
+        return serveBlog;
     }
     
     @PostMapping(value="/blog")
