@@ -33,11 +33,17 @@ public class ArticleService {
     }
 
     public List<Articles> getRelatedArticles(int id){
+
         List<Articles> relatedArticles = new ArrayList<>();
+        List<Articles> tempList = new ArrayList<>();
         Optional<Articles> currArticleObject = articlesRepo.findById(id);
-        if(currArticleObject != null){
-            relatedArticles.add(articlesRepo.findByTopic(currArticleObject.get().getTopic()).orElse(null));
+        String topic = new String(currArticleObject.get().getTopic());
+        tempList = articlesRepo.findAllByTopic(topic);
+
+        for (Articles articles : tempList) {
+            if(articles.getId() != id) relatedArticles.add(articles);
         }
+        
         return relatedArticles;
     }
 }

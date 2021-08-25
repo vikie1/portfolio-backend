@@ -1,9 +1,9 @@
 package io.github.vikie1.portfolio.articles;
 
-import java.util.Optional;
+import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 
 public interface ArticlesRepo extends CrudRepository<Articles, Integer>{
-    Optional<Articles> findByTopic(String topic);
+    List<Articles> findAllByTopic(String topic);
 }
