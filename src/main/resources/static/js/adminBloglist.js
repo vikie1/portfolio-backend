@@ -144,7 +144,7 @@ const getArticle = () => {
 
 const handleBtnDel = (id) => {
   const urlId = id.replace("del", "");
-  const url = "/admin/blog/delete/" + urlId;
+  const url = "/admin/blog/" + urlId;
   let csrfToken = getCookie("XSRF-TOKEN");
   const postConfigs = {
     headers: {

@@ -23,16 +23,16 @@ public class ArticleService {
         return articles;
     }
 
-    public List<Articles> getSingleArticle(int name) {
+    public List<Articles> getSingleArticle(long name) {
         List<Articles> articles = new ArrayList<>();
         articles.add(articlesRepo.findById(name).orElse(null));
         return articles;
     }
-    public void deleteArticle(int id) {
+    public void deleteArticle(long id) {
         articlesRepo.deleteById(id);
     }
 
-    public List<Articles> getRelatedArticles(int id){
+    public List<Articles> getRelatedArticles(long id){
 
         List<Articles> relatedArticles = new ArrayList<>();
 

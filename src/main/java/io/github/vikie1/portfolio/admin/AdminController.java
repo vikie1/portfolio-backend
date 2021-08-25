@@ -59,16 +59,13 @@ public class AdminController {
     @DeleteMapping(value = "/user/{username}")
     public void deleteUser(@PathVariable String username){ userService.deleteUser(username); }
 
-    @DeleteMapping(value = "/blog/delete/{id}")
-    public void deleteBlogById(@PathVariable Integer id) { articleService.deleteArticle(id); }
-
     @DeleteMapping(value = "/projects/delete/{id}")
-    public void deleteProject(@PathVariable String id) {
+    public void deleteProject(@PathVariable long id) {
         projectService.deleteProject(id);
     }
 
     @DeleteMapping(value = "/blog/{param}")
-    public void deleteArticle(@PathVariable int param) {
+    public void deleteArticle(@PathVariable long param) {
         articleService.deleteArticle(param);
     }
 
