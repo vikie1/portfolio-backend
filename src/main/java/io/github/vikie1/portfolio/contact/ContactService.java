@@ -1,6 +1,7 @@
 package io.github.vikie1.portfolio.contact;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,9 +19,7 @@ public class ContactService {
 
     public List<String> addContact(Contact contact) {
         contactRepo.save(contact);
-        List<String> reply = new ArrayList<>();
-        reply.add("success");
-        return reply;
+        return new ArrayList<>(Collections.singleton("success"));
     }
 
     public void deleteContact(int id){ contactRepo.deleteById(id); }

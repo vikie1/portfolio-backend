@@ -23,11 +23,9 @@ public class ArticlesController {
     
     @GetMapping(value="/blog/{id}")
     public HashMap<String, List<Articles>> getMethodName(@PathVariable int id) {
-        List<Articles> article = articleService.getSingleArticle(id);
-        List<Articles> relatedArticles = articleService.getRelatedArticles(id);
         HashMap<String, List<Articles>> serveBlog = new HashMap<>();
-        serveBlog.put("currArticle", article);
-        serveBlog.put("blog", relatedArticles);
+        serveBlog.put("currArticle", articleService.getRelatedArticles(id));
+        serveBlog.put("blog", articleService.getSingleArticle(id));
         return serveBlog;
     }
 }

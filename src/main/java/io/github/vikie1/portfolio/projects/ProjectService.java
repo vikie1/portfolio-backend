@@ -12,11 +12,7 @@ public class ProjectService {
     @Autowired
     ProjectRepo projectRepo;
 
-    public List<Projects> getProjects() {
-        List<Projects> projects = new ArrayList<>();
-        projectRepo.findAll().forEach(projects :: add);
-        return projects;
-    }
+    public List<Projects> getProjects() { return new ArrayList<Projects>(projectRepo.findAll()); }
 
     public void addProject(Projects projects) {
         projectRepo.save(projects);

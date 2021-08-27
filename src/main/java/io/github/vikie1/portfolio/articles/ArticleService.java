@@ -1,9 +1,11 @@
 package io.github.vikie1.portfolio.articles;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
+import io.github.vikie1.portfolio.articles.topics.TopicService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,16 +14,15 @@ public class ArticleService {
 
     @Autowired
     ArticlesRepo articlesRepo;
+    @Autowired
+    TopicService topicService;
 
     public void addArticles(Articles articles) {
         articlesRepo.save(articles);
+        topicService.addTopic(articles.getTopic());
     }
 
-    public List<Articles> getArticles() {
-        List<Articles> articles = new ArrayList<>();
-        articlesRepo.findAll().forEach(articles::add);
-        return articles;
-    }
+    public List<Articles> getArticles() { return new ArrayList<Articles>( articlesRepo.findAll() ); }
 
     public List<Articles> getSingleArticle(long name) {
         List<Articles> articles = new ArrayList<>();

@@ -1,9 +1,9 @@
 package io.github.vikie1.portfolio.articles;
 
+import org.springframework.data.jpa.repository.JpaRepository;
+
 import java.util.List;
 
-import org.springframework.data.repository.CrudRepository;
-
-public interface ArticlesRepo extends CrudRepository<Articles, Long>{
+public interface ArticlesRepo extends JpaRepository<Articles, Long> {
     List<Articles> findAllByTopic(String topic);
 }
