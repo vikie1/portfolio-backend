@@ -19,30 +19,30 @@
           <ul>
             <li>
               <strong>To bold text</strong>, use :
-              <code>&lt;Strong&gt; To bold text &lt;Strong/&gt;</code>.
+              <code>&lt;strong&gt; To bold text &lt;/strong&gt;</code>.
             </li>
             <li>
               <em>To italicize text</em>, use :
-              <code>&lt;em&gt;To italicize text&lt;em/&gt;</code>.
+              <code>&lt;em&gt;To italicize text&lt;/em&gt;</code>.
             </li>
             <li>
               Citations, like - <cite> From Victor Mwangi</cite>, use :
-              <code>&lt;cite&gt; From Victor Mwangi &lt;cite/&gt;</code>.
+              <code>&lt;cite&gt; From Victor Mwangi &lt;/cite&gt;</code>.
             </li>
             <li>
               <del>Deleted</del> text should use :
-              <code>&lt;del&gt; Deleted &lt;del/&gt;</code> and
+              <code>&lt;del&gt; Deleted &lt;/del&gt;</code> and
               <ins>inserted</ins> text should use :
-              <code>&lt;ins&gt; inserted &lt;ins/&gt;</code>.
+              <code>&lt;ins&gt; inserted &lt;/ins&gt;</code>.
             </li>
             <li>
               Superscript <sup>text</sup> uses :
-              <code>&lt;sup&gt; text &lt;sup/&gt;</code> and subscript
-              <sub>text</sub> uses : <code>&lt;sub&gt; text &lt;sub/&gt;</code>.
+              <code>&lt;sup&gt; text &lt;/sup&gt;</code> and subscript
+              <sub>text</sub> uses : <code>&lt;sub&gt; text &lt;/sub&gt;</code>.
             </li>
             <li>
               <h2>To insert sub heading</h2>
-              use : <code>&lt;H2&gt; To insert sub heading &lt;H2/&gt;</code>
+              use : <code>&lt;h2&gt; To insert sub heading &lt;/h2&gt;</code>
               <p>
                 You can also use h3, h4, h5, h6, for smaller subheadings <br />
                 Don't use h1 or h7 and above
@@ -54,14 +54,14 @@
             </li>
             <li>
               <p>This is paragraph 1</p>
-              use : <code>&lt;P&gt; This is paragraph 1 &lt;P/&gt;</code>
+              use : <code>&lt;p&gt; This is paragraph 1 &lt;/p&gt;</code>
               <p>This is paragraph 2</p>
-              use : <code>&lt;p&gt; This is paragraph 2 &lt;p/&gt;</code>
+              use : <code>&lt;p&gt; This is paragraph 2 &lt;/p&gt;</code>
               <p><br />A bigger gap for paragraph 3</p>
               add : <code> &lt;br&gt; </code> that is :
               <code
                 >&lt;p&gt; &lt;br&gt; A bigger gap for paragraph 3
-                &lt;p/&gt;</code
+                &lt;/p&gt;</code
               >
               <p>1 <code>&lt;br&gt; </code> will skip 1 line</p>
               <p>2 <code>&lt;br&gt; &lt;br&gt; </code> will skip 2 lines</p>
@@ -78,6 +78,7 @@
                 link &lt;a/&gt;</code
               >
             </li>
+            <strong>Note from development: Always use `aside` tag before `img` tag</strong>
           </ul>
         </div>
       </div>
@@ -157,6 +158,16 @@
           />
           <input type="submit" value="submit blog" />
         </form>
+      </div>
+
+      <div id="preview">
+        <h1 id="title"></h1>
+
+        <div class="main-cnt">
+          <article id="article"></article>
+          <br /><br /><br />
+          <br />
+        </div>
       </div>
     </main>
   </body>
