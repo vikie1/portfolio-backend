@@ -42,16 +42,10 @@ public class AdminController {
         return "redirect:/admin";
     }
     @PostMapping(value="/projects/new")
-    public String postProject(@RequestBody Projects entity) {
+    public String postProject(Projects entity) {
         projectService.addProject(entity);
         return "redirect:/admin";
     }
-    @PostMapping(value="/blog")
-    public void postArticle(@RequestBody Articles entity) {
-        articleService.addArticles(entity);
-    }
-
-
 
     //delete operations
     @DeleteMapping(value = "/projects") public void clearProjects(){ projectService.clear();}

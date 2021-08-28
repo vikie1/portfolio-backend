@@ -7,7 +7,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script src="/js/autogrowtextfield.js"></script>
 </head>
 <body>
 <div>
@@ -34,13 +33,13 @@
             th:action="@{/admin/projects/new}"
             th:method="post"
             th:object="${projects}"
+            onsubmit="handleFileSubmit(event)"
     >
         <div>
             <input
                     type="text"
                     name="name"
                     id="nameInput"
-                    onkeyup="populatePreviewH1(this.id)"
                     placeholder="Enter project name here"
                     field="*{name}"
             />
@@ -51,7 +50,6 @@
                     id="descriptionInput"
                     cols="50"
                     rows="10"
-                    onkeyup="AutoGrowTextArea(this)"
                     placeholder="Enter description here"
                     field="*{description}"
             ></textarea>
@@ -60,7 +58,7 @@
             <input
                     type="text"
                     name="title"
-                    id="topicInput"
+                    id="titleInput"
                     placeholder="Enter the title of the project"
                     field="*{title}"
             />
@@ -69,13 +67,13 @@
             <input
                     type="text"
                     name="url"
-                    id="url"
+                    id="urlInput"
                     placeholder="Enter the url of the project"
                     field="*{url}"
             />
         </div>
         <div>
-            <input type="hidden" id="imgURL" name="imgUrl" field="*{imgUrl}" />
+            <input type="hidden" id="imgURLInput" name="imgUrl" field="*{imgUrl}" />
         </div>
         <input
                 type="hidden"
@@ -83,6 +81,12 @@
                 value="${_csrf.token}"
         />
         <input type="submit" value="submit blog" />
+        <script>
+            function handleFileSubmit(e){
+            e.preventDefault();
+            console.log(
+            }
+        </script>
     </form>
 </div>
 </body>
