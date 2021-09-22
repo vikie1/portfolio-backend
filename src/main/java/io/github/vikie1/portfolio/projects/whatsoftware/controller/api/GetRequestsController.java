@@ -19,7 +19,7 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 
-@RestController @RequestMapping("/api")
+@RestController @RequestMapping("/api/project")
 public class GetRequestsController {
 
     @Autowired
