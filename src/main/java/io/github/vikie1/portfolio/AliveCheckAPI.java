@@ -19,10 +19,4 @@ public class AliveCheckAPI {
         return status;
     }
 
-    @GetMapping(value="/")
-    public String getMethodName() {
-        return new String("hi");
-    }
-    
-    
 }
