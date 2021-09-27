@@ -1,18 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="This is a user interface to the documentation of APIs developed by victor mwangi mostly for the portfolio"
+    />
     <title>Documentation for Victor Mwangi APIs</title>
-    <script type="module" src="/js/index.js"></script>
-</head>
-<body>
-<!-- just practicing spa with javascript -->
-    <div id="content">
-         <!-- To be populated by javascript -->
-         <div id="js-alert" style="text-align: center;"> You need javascript to run this application </div>
-    </div>
+    <script src="/js/index.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet"> 
+    <style>
+      body{
+        background-image: url("/img/background.jpg");
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-color: blue;
+        background-blend-mode: darken;
+        overflow: hidden;
+      }
+      main{
+        color: white;
+        height: 99vh;
+        display: flex;
+        flex-direction: column;
+        place-content: center;
+        place-items: center;
+        font-family: 'nunito', sans-serif;
+      }
+      header{
+        display: flex;
+        flex-direction: column;
+        place-items: center;
+      }
+      ul,p{
+        font-size: larger;
+        font-weight: 200px;
+      }
+      h1{
+        font-size: xx-large;
+        font-weight: 200px;
+      }
+      a{
+        color: skyblue;
+      }
+      input{
+        border: solid 1.5px white;
+        border-radius: 5px;
+        color: white;
+        background: transparent;
+        padding: .5rem;
+        cursor: pointer;
+      }
+      input:hover{
+        scale: 1.02;
+        background-color: rgb(0, 255, 255, 0.1);
+        backdrop-filter: blur(4px);
+        box-shadow: 0.1px 0.1px 5px 4px skyblue;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+        <header>
+          <h1>
+            This is where you get the documentation <br/> for the API serving the websites :
+          </h1>
+          <ul>
+            <li>
+              <span>Personal portfolio</span><a href="https://victormwangi.netlify.app"> -> Here</a>
+            </li>
+            <li>
+              <span>whatsoftware</span>
+            </li>
+          </ul>
+          <p>
+            The API is built using Spring Boot and produces a REST endpoint
+          </p>
+        </header>
 
-</body>
+        <div>
+          <div>
+            <input type="button" value="Read The docs">
+          </div>
+        </div>
+    </main>
+  </body>
 </html>
