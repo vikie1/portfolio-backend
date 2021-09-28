@@ -9,12 +9,14 @@
       content="This is a user interface to the documentation of APIs developed by victor mwangi mostly for the portfolio"
     />
     <title>Documentation for Victor Mwangi APIs</title>
-    <script src="/js/index.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet"> 
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito&display=swap"
+      rel="stylesheet"
+    />
     <style>
-      body{
+      body {
         background-image: url("/img/background.jpg");
         background-position: center;
         background-size: cover;
@@ -24,40 +26,41 @@
         background-blend-mode: darken;
         overflow: hidden;
       }
-      main{
+      main {
         color: white;
         height: 99vh;
         display: flex;
         flex-direction: column;
         place-content: center;
         place-items: center;
-        font-family: 'nunito', sans-serif;
+        font-family: "nunito", sans-serif;
       }
-      header{
+      header {
         display: flex;
         flex-direction: column;
         place-items: center;
       }
-      ul,p{
+      ul,
+      p {
         font-size: larger;
         font-weight: 200px;
       }
-      h1{
+      h1 {
         font-size: xx-large;
         font-weight: 200px;
       }
-      a{
+      a {
         color: skyblue;
       }
-      input{
+      input {
         border: solid 1.5px white;
         border-radius: 5px;
         color: white;
         background: transparent;
-        padding: .5rem;
+        padding: 0.5rem;
         cursor: pointer;
       }
-      input:hover{
+      input:hover {
         scale: 1.02;
         background-color: rgb(0, 255, 255, 0.1);
         backdrop-filter: blur(4px);
@@ -67,28 +70,29 @@
   </head>
   <body>
     <main>
-        <header>
-          <h1>
-            This is where you get the documentation <br/> for the API serving the websites :
-          </h1>
-          <ul>
-            <li>
-              <span>Personal portfolio</span><a href="https://victormwangi.netlify.app"> -> Here</a>
-            </li>
-            <li>
-              <span>whatsoftware</span>
-            </li>
-          </ul>
-          <p>
-            The API is built using Spring Boot and produces a REST endpoint
-          </p>
-        </header>
+      <header>
+        <h1>
+          This is where you get the documentation <br />
+          for the API serving this websites :
+        </h1>
+        <ul>
+          <li>
+            <span>Personal portfolio</span
+            ><a href="https://victormwangi.netlify.app"> -> Here</a>
+          </li>
+          <li>
+            <span>whatsoftware</span>
+          </li>
+        </ul>
+        <p>The API is built using Spring Boot and produces a REST endpoint</p>
+      </header>
 
+      <div>
         <div>
-          <div>
-            <input type="button" value="Read The docs">
-          </div>
+          <input id="start" type="button" value="Read The docs" />
         </div>
+      </div>
     </main>
+    <script src="/js/index.js"></script>
   </body>
 </html>
