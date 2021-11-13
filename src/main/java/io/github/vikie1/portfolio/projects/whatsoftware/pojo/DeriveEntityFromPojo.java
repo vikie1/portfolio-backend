@@ -12,9 +12,8 @@ import org.springframework.lang.NonNull;
  */
 
 public class DeriveEntityFromPojo {
-    private CategoryEntity category;
-
-    //Construct SoftwareEntity
+    
+    // Construct SoftwareEntity
     static public SoftwareEntity constructSoftwareEntity(@NonNull SoftwareAttributesPojo softwareAttributesPojo){
         return new SoftwareEntity(
                 softwareAttributesPojo.getSoftwareName(),

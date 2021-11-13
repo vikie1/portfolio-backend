@@ -25,7 +25,7 @@ public class SecurityProtocols extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
-                .and().csrf().ignoringAntMatchers("/api/contact/**"); //disable csrf because I don't want cross domain csrf headache
+                .and().csrf().ignoringAntMatchers("/api/**"); //disable csrf because I don't want cross domain csrf headache
         http.authorizeRequests()
                 .antMatchers("/admin/**", "/actuator/**").hasRole("ADMIN")
                 .antMatchers("/**").permitAll()
