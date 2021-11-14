@@ -6,10 +6,11 @@ handleFileSubmit = (e) => {
   const files = document.querySelector("#fileu").files;
   const formData = new FormData();
 
+  document.getElementById("data").innerHTML = "please wait...";
   for (let i = 0; i < files.length; i++) {
     let file = files[i];
     formData.append("file", file);
-    formData.append("folder", "portfolio");
+    formData.append("folder", "betterdevs");
     formData.append("upload_preset", "owbjsdvf");
 
     fetch(url, {
@@ -23,7 +24,7 @@ handleFileSubmit = (e) => {
         const result = JSON.parse(data);
         const imageUrl = document.getElementById("imgURL");
         imageUrl.value = result.secure_url;
-        document.getElementById("data").innerHTML += "Done uploading";
+        document.getElementById("data").innerHTML = "Done uploading";
       });
   }
 };

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="/js/betterdevs.js"></script>
+</head>
+<body>
+    <h1>Will Use this to create content for betterdevs</h1>
+    <main>
+
+        <!-- Uploading images to cloudinary -->
+        <div>
+            <script src="/js/upload.js"></script>
+            <form
+              method="post"
+              enctype="multipart/form-data"
+              id="uploadForm"
+              onsubmit="handleFileSubmit(event)"
+            >
+              <div style="border: solid; width: max-content;">
+                <p>choose picture that will appear in blog preview</p>
+                <input type="file" id="fileu" name="files[]" />
+              </div>
+              <input type="submit" value="Upload picture" name="submit" />
+            </form>
+  
+            <p id="data"></p>
+          </div>
+
+        <!-- Creating the blog -->
+        <form method="post" id="blog" onsubmit="submitBlog(event)">
+            <input type="text" name="Name" id="name">
+            <input type="text" name="desc" id="desc">
+            <input type="text" name="link" id="link">
+            <input type="text" name="topics" id="topics" placeholder="Java, Javascript, Spring Framework ...">
+            <input type="text" name="img" id="imgURL" hidden>
+            <input type="submit" value="Submit">
+        </form>
+        <p id="success"></p>
+
+    </main>
+</body>
+</html>

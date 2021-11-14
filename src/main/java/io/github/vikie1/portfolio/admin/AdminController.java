@@ -28,6 +28,7 @@ public class AdminController {
     @GetMapping(value = "/signUp") public String getSignup() { return "signup"; }
     @GetMapping(value = "/blog/new") public String getNewBlogCreator() { return "createblogs"; }
     @GetMapping(value = "/projects/new") public String getNewProjectCreator() { return "create_projects"; }
+    @GetMapping(value = "/betterdevs") public String getBetterDevs() { return "betterdevs"; }
 
     // create operations updates will stay here for the time being.
     @PostMapping(value = "/signUp")
