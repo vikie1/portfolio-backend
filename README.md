@@ -30,7 +30,7 @@ Follow the configuration format in the application.properties file under the src
 We shall use maven to cary out the build task.
 <ul>
 ->for local tests, use:
-<li>$ mvn spring-boot:run -> (you can relace mvn with the ./mvnw-for *nix/*nix-like systems or .mvnw.cmd for ms-windows)</li>
+<li>$ mvn spring-boot:run -> (you can relace mvn with the ./mvnw for *nix/*nix-like systems or .mvnw.cmd for ms-windows)</li>
 ->if that works then it's time to deploy
 <li>$ mvn clean package -> this creates a portfolio-{version-number}.jar file under the /target directory. </li>
 <li>$ java -jar portfolio-{version-number}.jar -> to run locally </li>
