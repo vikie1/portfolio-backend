@@ -28,12 +28,11 @@ Follow the configuration format in the application.properties file under the src
 
 ## Installation, packaging and execution
 We shall use maven to cary out the build task.
-<ul>
-->for local tests, use:
-<li>`$ mvn spring-boot:run` -> (you can relace mvn with the ./mvnw for *nix/*nix-like systems or .mvnw.cmd for ms-windows)</li>
-->if that works then it's time to deploy
-<li>`$ mvn clean package` -> this creates a portfolio-{version-number}.jar file under the /target directory. </li>
-<li>`$ java -jar portfolio-{version-number}.jar` -> to run locally </li>
-<li>`$ heroku deploy:jar portfolio-{version-number}.jar` -> to deploy to your heroku instance.</li>
-<li>`$ heroku java:visualvm` -> can also be used to monitor the application locally using VisualVM
-</ul>
+
+->for local tests, use: <br>
+`$ mvn spring-boot:run` -> (you can relace mvn with the ./mvnw for *nix/*nix-like systems or .mvnw.cmd for ms-windows)<br>
+->if that works then it's time to deploy<br>
+`$ mvn clean package` -> this creates a portfolio-{version-number}.jar file under the /target directory.<br>
+`$ java -jar portfolio-{version-number}.jar` -> to run locally<br>
+`$ heroku deploy:jar portfolio-{version-number}.jar` -> to deploy to your heroku instance.<br>
+`$ heroku java:visualvm` -> can also be used to monitor the application locally using VisualVM
