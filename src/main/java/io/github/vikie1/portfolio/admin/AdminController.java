@@ -6,6 +6,8 @@ import io.github.vikie1.portfolio.articles.ArticleService;
 import io.github.vikie1.portfolio.articles.Articles;
 import io.github.vikie1.portfolio.projects.ProjectService;
 import io.github.vikie1.portfolio.projects.Projects;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -24,7 +26,9 @@ public class AdminController {
     @Autowired ProjectService projectService;
 
     //read operations
-    @GetMapping(value = "") public String getAdminPanel() { return "admin"; }
+    @GetMapping(value = "")
+    @ApiOperation(value="This is the main admin panel")
+    public String getAdminPanel() { return "admin"; }
     @GetMapping(value = "/signUp") public String getSignup() { return "signup"; }
     @GetMapping(value = "/blog/new") public String getNewBlogCreator() { return "createblogs"; }
     @GetMapping(value = "/projects/new") public String getNewProjectCreator() { return "create_projects"; }

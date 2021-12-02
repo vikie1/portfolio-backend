@@ -10,13 +10,13 @@ spring:
 
   datasource:
     # development database
-#    url: jdbc:postgresql://localhost:5432/portfolio
-#    username: vikie
-#    password: *******
+    url: jdbc:postgresql://localhost:5432/portfolio
+    username: vikie
+    password: victorMwas1
     # Database to be injected by hosting service
-    url: ${JDBC_DATABASE_URL}
-    username: ${JDBC_DATABASE_USERNAME}
-    password: ${JDBC_DATABASE_PASSWORD}
+#    url: ${JDBC_DATABASE_URL}
+#    username: ${JDBC_DATABASE_USERNAME}
+#    password: ${JDBC_DATABASE_PASSWORD}
 
   # Spring JPA configs
   jpa:
@@ -41,3 +41,12 @@ spring:
           timeout: 5000
           starttls:
             enable: true
+
+# Spring actuator configuration
+management:
+  # Enable spring actuator to be accessible via web
+  endpoints:
+    web:
+      exposure:
+        include:
+          - "*"

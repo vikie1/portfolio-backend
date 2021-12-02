@@ -8,7 +8,7 @@ function getDom(element){
         element.innerHTML = "action not complete due to " + error; 
     })
 };
-
-document.getElementById("start").addEventListener("click", function () {
-  getDom(document.body)
-});
+//
+//document.getElementById("start").addEventListener("click", function () {
+//  getDom(document.body)
+//});
