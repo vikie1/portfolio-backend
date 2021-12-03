@@ -15,7 +15,7 @@ public class SendMailService {
             sendMail.sendVisitorEmail(contact);
             sendMail.sendMyMail(contact);
         } catch (Exception e) {
-            //just do nothing, but you have to stay here to prevent runtime crashing
+            //just do nothing, for now.
         }
     }
 }

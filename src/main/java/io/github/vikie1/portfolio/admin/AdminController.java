@@ -6,8 +6,8 @@ import io.github.vikie1.portfolio.articles.ArticleService;
 import io.github.vikie1.portfolio.articles.Articles;
 import io.github.vikie1.portfolio.projects.ProjectService;
 import io.github.vikie1.portfolio.projects.Projects;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -19,6 +19,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/admin")
+@OpenAPIDefinition(tags = {
+        @Tag(name = "Admin", description = "Admin operations")
+})
 public class AdminController {
 
     @Autowired UserService userService;
@@ -27,9 +30,8 @@ public class AdminController {
 
     //read operations
     @GetMapping(value = "")
-    @ApiOperation(value="This is the main admin panel")
     public String getAdminPanel() { return "admin"; }
-    @GetMapping(value = "/signUp") public String getSignup() { return "signup"; }
+    @GetMapping(value = "/signUp")  public String getSignup() { return "signup"; }
     @GetMapping(value = "/blog/new") public String getNewBlogCreator() { return "createblogs"; }
     @GetMapping(value = "/projects/new") public String getNewProjectCreator() { return "create_projects"; }
     @GetMapping(value = "/betterdevs") public String getBetterDevs() { return "betterdevs"; }
@@ -51,21 +53,7 @@ public class AdminController {
         return "redirect:/admin";
     }
 
-    //delete operations
-    @DeleteMapping(value = "/projects") public void clearProjects(){ projectService.clear();}
-
-    @DeleteMapping(value = "/user/{username}")
-    public void deleteUser(@PathVariable String username){ userService.deleteUser(username); }
-
-    @DeleteMapping(value = "/projects/delete/{id}")
-    public void deleteProject(@PathVariable long id) {
-        projectService.deleteProject(id);
-    }
-
-    @DeleteMapping(value = "/blog/{param}")
-    public void deleteArticle(@PathVariable long param) {
-        articleService.deleteArticle(param);
-    }
+    //delete operations will be in a RestController
 
 
 }

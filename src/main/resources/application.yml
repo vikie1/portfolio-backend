@@ -12,7 +12,7 @@ spring:
     # development database
 #    url: jdbc:postgresql://localhost:5432/portfolio
 #    username: vikie
-#    password: ********
+#    password: *******
     # Database to be injected by hosting service
     url: ${JDBC_DATABASE_URL}
     username: ${JDBC_DATABASE_USERNAME}

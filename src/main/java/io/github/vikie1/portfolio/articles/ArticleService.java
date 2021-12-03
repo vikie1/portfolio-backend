@@ -24,9 +24,9 @@ public class ArticleService {
 
     public List<Articles> getArticles() { return new ArrayList<Articles>( articlesRepo.findAll() ); }
 
-    public List<Articles> getSingleArticle(long name) {
+    public List<Articles> getSingleArticle(long id) {
         List<Articles> articles = new ArrayList<>();
-        articles.add(articlesRepo.findById(name).orElse(null));
+        articles.add(articlesRepo.findById(id).orElse(null));
         return articles;
     }
     public void deleteArticle(long id) {
