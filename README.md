@@ -10,7 +10,7 @@ The live version of the project currently serves <a href="https://victormwangi.n
 ## Requirements
 <ul>
 <li>Java 17 -> check system.properties or pom.xml for changes</li>
-<li>Maven</li>
+<li>Gradle >= 7.3 - for Java 17 support</li>
 <li>PostGresQl database</li>
 <li>An email and a mail server</li>
 </ul>
@@ -30,9 +30,9 @@ Follow the configuration format in the application.properties file under the src
 We shall use maven to cary out the build task.
 
 ->for local tests, use: <br>
-`$ mvn spring-boot:run` -> (you can relace mvn with the ./mvnw for *nix/*nix-like systems or .mvnw.cmd for ms-windows)<br>
+`$ gradle bootRun` -> (you can relace gradle with the .gradlew for *nix/*nix-like systems or .gradlew.cmd for ms-windows)<br>
 ->if that works then it's time to deploy<br>
-`$ mvn clean package` -> this creates a portfolio-{version-number}.jar file under the /target directory.<br>
-`$ java -jar portfolio-{version-number}.jar` -> to run locally<br>
-`$ heroku deploy:jar portfolio-{version-number}.jar` -> to deploy to your heroku instance.<br>
+`$ gradle bootJar` -> this creates a portfolio-{version-number}.jar file under the build/libs directory.<br>
+`$ java -jar build/libs/portfolio-{version-number}.jar` -> to run locally<br>
+`$ heroku deploy:jar build/libs/portfolio-{version-number}.jar` -> to deploy to your heroku instance.<br>
 `$ heroku java:visualvm` -> can also be used to monitor the application locally using VisualVM
