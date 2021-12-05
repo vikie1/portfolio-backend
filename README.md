@@ -21,7 +21,7 @@ Recommended:
 </ul>
 
 ## Configuration
-Follow the configuration format in the application.properties file under the src/main/resources/ directory to:<br>
+Follow the configuration format in the application.yml file under the src/main/resources/ directory to:<br>
 => provide the link, username and password of your postgresql database instance, my production details are hidden and will be injected during runtime after deployment.<br>
 => provide the configuration of your mail server. <br>
 <strong>The application.properties file could contain sensitive files so you have to cross-check before making it public</strong>
