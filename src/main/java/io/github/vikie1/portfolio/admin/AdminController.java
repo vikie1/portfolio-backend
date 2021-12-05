@@ -19,9 +19,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/admin")
-@OpenAPIDefinition(tags = {
-        @Tag(name = "Admin", description = "Admin operations")
-})
 public class AdminController {
 
     @Autowired UserService userService;

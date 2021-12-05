@@ -1,10 +1,7 @@
 package io.github.vikie1.portfolio.admin;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.github.vikie1.portfolio.admin.authorities.AuthoritiesEntity;
-import io.github.vikie1.portfolio.admin.authorities.AuthoritiesRepo;
 import io.github.vikie1.portfolio.admin.user.UserEntity;
-import io.github.vikie1.portfolio.admin.user.UserRepository;
 import io.github.vikie1.portfolio.admin.user.UserService;
 import io.github.vikie1.portfolio.articles.ArticleService;
 import io.github.vikie1.portfolio.articles.Articles;
@@ -19,7 +16,6 @@ import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.doNothing;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -73,10 +69,7 @@ class AdminControllerTestAdmin {
         doNothing().when(userService).deleteUser(any(String.class));
         doNothing().when(projectService).deleteProject(any(Long.class));
         doNothing().when(articleService).deleteArticle(any(Long.class));
-        mockMvc.perform(delete("/admin/user/{username}","name")
-                        .with(csrf())
-                        .contentType("application/json")
-                        .accept("application/json"))
+        mockMvc.perform(delete("/admin/user/{username}","name").with(csrf()))
                 .andExpect(status().isOk());
         mockMvc.perform(delete("/admin/projects").with(csrf()))
                 .andExpect(status().isOk());
