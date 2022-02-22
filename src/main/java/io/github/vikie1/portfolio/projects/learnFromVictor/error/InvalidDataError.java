@@ -1,4 +1,4 @@
-package io.github.vikie1.portfolio.projects.betterdevs.error;
+package io.github.vikie1.portfolio.projects.learnFromVictor.error;
 
 public class InvalidDataError extends Error{
     public InvalidDataError(String message){

@@ -1,4 +1,4 @@
-package io.github.vikie1.portfolio.projects.betterdevs.entity;
+package io.github.vikie1.portfolio.projects.learnFromVictor.entity;
 
 import javax.persistence.*;
 import java.util.Set;
