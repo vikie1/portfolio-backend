@@ -1,5 +1,7 @@
 package io.github.vikie1.portfolio.projects.learnFromVictor.entity;
 
+import io.github.vikie1.portfolio.projects.learnFromVictor.entity.course.Course;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -11,6 +13,8 @@ public class Topic {
     private String name;
     @ManyToMany(mappedBy = "topic", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     Set<Blogs> blogs;
+    @ManyToMany(mappedBy = "topic", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    Set<Course> courses;
 
     public Topic(String name){
         setName(name);

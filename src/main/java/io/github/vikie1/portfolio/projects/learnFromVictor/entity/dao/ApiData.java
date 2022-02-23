@@ -8,6 +8,16 @@ public class ApiData{
           String imgURL,
           String description,
           LocalDate publishDate,
-          String[] topics
+          String[] topics,
+          String post
+    ){}
+    public static record Course(
+          String name,
+          String imgURL,
+          String description,
+          LocalDate postDate,
+          String[] topics,
+          double chapter,
+          String content
     ){}
 }

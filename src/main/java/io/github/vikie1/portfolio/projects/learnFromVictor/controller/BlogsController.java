@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/api/betterdevs")
+@RequestMapping("/api/lfv")
 public class BlogsController {
     @Autowired
     BlogService blogService;
