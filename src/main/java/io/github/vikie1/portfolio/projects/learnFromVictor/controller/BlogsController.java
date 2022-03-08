@@ -18,7 +18,7 @@ public class BlogsController {
     BlogService blogService;
 
     //POST
-    @PostMapping("/blog")
+    @PostMapping("/blogs")
     public void newBlog(@RequestBody ApiData.Blog blog){
         blogService.save(BlogUtil.retrieveBlog(blog));
     }
@@ -38,10 +38,10 @@ public class BlogsController {
     }
 
     //PUT
-    @PutMapping("/blog")
+    @PutMapping("/blogs")
     public void updateBlog(@RequestBody ApiData.Blog blog){blogService.update(BlogUtil.retrieveBlog(blog));}
 
     //DELETE
-    @DeleteMapping("/blog/{id}")
+    @DeleteMapping("/blogs/{id}")
     public void deleteBlog(@PathVariable("id") long id){blogService.delete(id);}
 }
