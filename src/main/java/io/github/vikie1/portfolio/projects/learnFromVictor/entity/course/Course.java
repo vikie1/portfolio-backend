@@ -11,8 +11,6 @@ import java.util.Set;
 public class Course {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY) @Column(name = "id", nullable = false)
     private Long id;
-    private String description;
-    private String imgURL;
     private LocalDate postDate;
     private double chapter;
     @Lob @Type(type = "org.hibernate.type.TextType")
@@ -24,10 +22,8 @@ public class Course {
 
     public Course() {}
 
-    public Course(String description, String imgURL, LocalDate postDate, double chapter, Set<Topic> topic, String content) {
+    public Course(LocalDate postDate, double chapter, Set<Topic> topic, String content) {
         setChapter(chapter);
-        setDescription(description);
-        setImgURL(imgURL);
         setPostDate(postDate);
         setTopic(topic);
         setContent(content);
@@ -36,8 +32,6 @@ public class Course {
     public CourseIdentifiers getCourseId() {
         return courseId;
     }
-    public String getDescription() { return description; }
-    public String getImgURL() { return imgURL; }
     public double getChapter() { return chapter; }
     public LocalDate getPostDate() { return postDate; }
     public Set<Topic> getTopic() { return topic; }
@@ -48,8 +42,6 @@ public class Course {
         this.courseId = courseId;
     }
     public void setId(Long id) { this.id = id; }
-    public void setDescription(String description) { this.description = description; }
-    public void setImgURL(String imgURL) { this.imgURL = imgURL; }
     public void setPostDate(LocalDate postDate) { this.postDate = postDate; }
     public void setChapter(double chapter) { this.chapter = chapter; }
     public void setTopic(Set<Topic> topic) { this.topic = topic; }

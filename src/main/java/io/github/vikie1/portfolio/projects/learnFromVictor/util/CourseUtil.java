@@ -15,13 +15,11 @@ public class CourseUtil {
         Set<Topic> topics = new HashSet<>();
         for (String topic: rawCourse.topics()) topics.add(new Topic(topic));
         Course course =  new Course(
-                rawCourse.description(),
-                rawCourse.imgURL(),
                 rawCourse.postDate(),
                 rawCourse.chapter(), topics,
                 rawCourse.content()
         );
-        course.setCourseId(new CourseIdentifiers(rawCourse.name()));
+        course.setCourseId(new CourseIdentifiers(rawCourse.description(), rawCourse.imgURL(),rawCourse.name()));
         return course;
     }
 }
