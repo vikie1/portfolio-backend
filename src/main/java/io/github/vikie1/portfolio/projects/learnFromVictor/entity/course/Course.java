@@ -3,6 +3,8 @@ package io.github.vikie1.portfolio.projects.learnFromVictor.entity.course;
 import io.github.vikie1.portfolio.projects.learnFromVictor.entity.Topic;
 import org.hibernate.annotations.Type;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Set;
@@ -29,18 +31,15 @@ public class Course {
         setContent(content);
     }
 
-    public CourseIdentifiers getCourseId() {
-        return courseId;
-    }
+    @JsonIgnore
+    public CourseIdentifiers getCourseId() { return courseId; }
     public double getChapter() { return chapter; }
     public LocalDate getPostDate() { return postDate; }
     public Set<Topic> getTopic() { return topic; }
     public Long getId() { return id; }
     public String getContent() { return content; }
 
-    public void setCourseId(CourseIdentifiers courseId) {
-        this.courseId = courseId;
-    }
+    public void setCourseId(CourseIdentifiers courseId) { this.courseId = courseId; }
     public void setId(Long id) { this.id = id; }
     public void setPostDate(LocalDate postDate) { this.postDate = postDate; }
     public void setChapter(double chapter) { this.chapter = chapter; }
