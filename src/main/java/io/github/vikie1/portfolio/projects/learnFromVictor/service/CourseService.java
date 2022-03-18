@@ -36,17 +36,18 @@ public class CourseService {
             if(!topicsRepository.existsByNameAllIgnoreCase(topic.getName())) topicsRepository.save(topic);
             topicsToSave.add(topicsRepository.getByNameAllIgnoreCase(topic.getName()));
         }
-        if (courseIdRepository.existsByNameAllIgnoreCase(course.getCourseId().getName()))
-            course.setCourseId(courseIdRepository.findByNameAllIgnoreCase(course.getCourseId().getName()));
-        else course.setCourseId(courseIdRepository.save(course.getCourseId()));
         course.getCourseId().setTopic(topicsToSave);
+        if (courseIdRepository.existsByNameAllIgnoreCase(course.getCourseId().getName())){
+            CourseIdentifiers courseIdentifiers = courseIdRepository.findByNameAllIgnoreCase(course.getCourseId().getName());
+            courseIdentifiers.setTopic(topicsToSave);
+            course.setCourseId(courseIdRepository.save(courseIdentifiers));
+        }
+        else course.setCourseId(courseIdRepository.save(course.getCourseId()));
         courseRepository.save(course);
     }
 
     //READ
-    public List<CourseIdentifiers> getAllCourses(){
-        return courseIdRepository.findAll();
-    }
+    public List<CourseIdentifiers> getAllCourses(){ return courseIdRepository.findAll(); }
     public CourseIdentifiers getByCourseName(String name){
         return courseIdRepository.findByNameAllIgnoreCase(name);
     }
@@ -67,6 +68,7 @@ public class CourseService {
         course.setId(id);
         course.setCourseId(courseIdRepository.findByNameAllIgnoreCase(course.getCourseId().getName()));
         course.getCourseId().setTopic(topicsToSave);
+        course.setCourseId(courseIdRepository.save(course.getCourseId()));
         courseRepository.save(course);
     }
 

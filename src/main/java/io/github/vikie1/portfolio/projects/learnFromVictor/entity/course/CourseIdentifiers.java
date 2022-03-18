@@ -7,7 +7,7 @@ import java.util.Set;
 
 @Entity
 public class CourseIdentifiers {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY) @Column(name = "id", nullable = false)
     private long courseId;
     @Column(unique = true)
     private String name;
@@ -15,7 +15,7 @@ public class CourseIdentifiers {
     private String imgURL;
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "courseId", cascade = CascadeType.ALL)
     Set<Course> courses;
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.MERGE) @JoinColumn(name = "course_id")
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.MERGE) @JoinColumn(name = "course_identifiers_course_id")
     private Set<Topic> topic;
 
     public CourseIdentifiers() {}

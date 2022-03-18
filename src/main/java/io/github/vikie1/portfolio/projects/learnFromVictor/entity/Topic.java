@@ -8,14 +8,15 @@ import java.util.Set;
 
 @Entity
 public class Topic {
-    @Id @GeneratedValue(strategy = GenerationType.AUTO) @Column(name = "id", nullable = false)
+    @Id @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(nullable = false, unique = true)
     private String name;
     @ManyToMany(mappedBy = "topic", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     Set<Blogs> blogs;
     @ManyToMany(mappedBy = "topic", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    Set<CourseIdentifiers> courses;
+    Set<CourseIdentifiers> courseIdentifiers;
 
     public Topic(String name){
         setName(name);
