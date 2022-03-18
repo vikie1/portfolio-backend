@@ -18,6 +18,7 @@ public class ApiData{
           LocalDate postDate,
           String[] topics,
           double chapter,
-          String content
+          String content,
+          String chapterName
     ){}
 }

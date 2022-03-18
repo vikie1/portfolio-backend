@@ -30,7 +30,7 @@ public class CourseService {
     @Async
     public void addCourse(Course course) {
         if (course == null || course.getCourseId().getName().isEmpty()) throw new IllegalArgumentException("Course name cannot be null");
-        Set<Topic> topics = course.getTopic();
+        Set<Topic> topics = course.getCourseId().getTopic();
         Set<Topic> topicsToSave = new HashSet<>();
         for (Topic topic : topics) {
             if(!topicsRepository.existsByNameAllIgnoreCase(topic.getName())) topicsRepository.save(topic);
@@ -39,7 +39,7 @@ public class CourseService {
         if (courseIdRepository.existsByNameAllIgnoreCase(course.getCourseId().getName()))
             course.setCourseId(courseIdRepository.findByNameAllIgnoreCase(course.getCourseId().getName()));
         else course.setCourseId(courseIdRepository.save(course.getCourseId()));
-        course.setTopic(topicsToSave);
+        course.getCourseId().setTopic(topicsToSave);
         courseRepository.save(course);
     }
 
@@ -58,7 +58,7 @@ public class CourseService {
             throw new IllegalArgumentException("Course name cannot be null");
         if (!courseIdRepository.existsByNameAllIgnoreCase(course.getCourseId().getName()))
             throw new InvalidDataError("Course does not exist, create before update");
-        Set<Topic> topics = course.getTopic();
+        Set<Topic> topics = course.getCourseId().getTopic();
         Set<Topic> topicsToSave = new HashSet<>();
         for (Topic topic : topics) {
             if(!topicsRepository.existsByNameAllIgnoreCase(topic.getName())) topicsRepository.save(topic);
@@ -66,7 +66,7 @@ public class CourseService {
         }
         course.setId(id);
         course.setCourseId(courseIdRepository.findByNameAllIgnoreCase(course.getCourseId().getName()));
-        course.setTopic(topicsToSave);
+        course.getCourseId().setTopic(topicsToSave);
         courseRepository.save(course);
     }
 

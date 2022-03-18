@@ -16,10 +16,11 @@ public class CourseUtil {
         for (String topic: rawCourse.topics()) topics.add(new Topic(topic));
         Course course =  new Course(
                 rawCourse.postDate(),
-                rawCourse.chapter(), topics,
-                rawCourse.content()
+                rawCourse.chapter(),
+                rawCourse.content(),
+                rawCourse.chapterName()
         );
-        course.setCourseId(new CourseIdentifiers(rawCourse.description(), rawCourse.imgURL(),rawCourse.name()));
+        course.setCourseId(new CourseIdentifiers(rawCourse.description(), rawCourse.imgURL(),topics,rawCourse.name()));
         return course;
     }
 }
