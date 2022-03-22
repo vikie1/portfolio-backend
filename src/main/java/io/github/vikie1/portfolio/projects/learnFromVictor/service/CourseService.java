@@ -33,8 +33,9 @@ public class CourseService {
         Set<Topic> topics = course.getCourseId().getTopic();
         Set<Topic> topicsToSave = new HashSet<>();
         for (Topic topic : topics) {
-            if(!topicsRepository.existsByNameAllIgnoreCase(topic.getName())) topicsRepository.save(topic);
-            topicsToSave.add(topicsRepository.getByNameAllIgnoreCase(topic.getName()));
+            if(!topicsRepository.existsByNameAllIgnoreCase(topic.getName())) {
+                topicsToSave.add(topicsRepository.save(topic));
+            }else topicsRepository.getByNameAllIgnoreCase(topic.getName());
         }
         course.getCourseId().setTopic(topicsToSave);
         if (courseIdRepository.existsByNameAllIgnoreCase(course.getCourseId().getName())){

@@ -53,21 +53,18 @@ public class BlogService {
         Set<Topic> current = blog.getTopic();
         Set<Topic> required = new HashSet<>();
         for (Topic topic: current) {
-            if (!topicsRepository.existsByNameAllIgnoreCase(topic.getName())) {
-                topicsRepository.save(topic);
-            }
+            if (!topicsRepository.existsByNameAllIgnoreCase(topic.getName())) { topicsRepository.save(topic); }
             required.add(topicsRepository.getByNameAllIgnoreCase(topic.getName()));
         }
-        Blogs newBlog = blogRepository.findByNameAllIgnoreCase(blog.getName());
-        newBlog.setTopic(required);
-        blogRepository.save(newBlog);
+        Blogs existing = blogRepository.findByNameAllIgnoreCase(blog.getName());
+        blog.setTopic(required);
+        blog.setId(existing.getId());
+        blogRepository.save(blog);
     }
 
     //DELETE
     @Async
-    public void delete(Blogs blog){
-        if (blogRepository.existsByNameAllIgnoreCase(blog.getName())) blogRepository.delete(blog);
-    }
+    public void delete(Blogs blog){ if (blogRepository.existsByNameAllIgnoreCase(blog.getName())) blogRepository.delete(blog);}
     @Async
     public void delete(long id){
         if (blogRepository.existsById(id)) blogRepository.deleteById(id);

@@ -17,6 +17,8 @@ public class Topic {
     Set<Blogs> blogs;
     @ManyToMany(mappedBy = "topic", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     Set<CourseIdentifiers> courseIdentifiers;
+    @ManyToMany(mappedBy = "topics", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    Set<RoadMap> roadMaps;
 
     public Topic(String name){
         setName(name);
