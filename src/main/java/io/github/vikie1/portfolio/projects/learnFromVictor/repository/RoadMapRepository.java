@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Set;
 
 public interface RoadMapRepository extends JpaRepository<RoadMap, Long> {
-    RoadMap findByNameAllIgnoreCase(String name);
-    List<RoadMap> findAllByTopicsIn(Set<Topic> topics);
+    RoadMap getByNameAllIgnoreCase(String name);
+    List<RoadMap> getAllByTopicsIn(Set<Topic> topics);
     boolean existsByNameAllIgnoreCase(String name);
 }
