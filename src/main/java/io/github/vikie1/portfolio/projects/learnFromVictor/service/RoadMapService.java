@@ -59,4 +59,10 @@ public class RoadMapService {
             throw new DatabaseWriteError("Cannot delete RoadMap with name: " + roadMap.getName() + " as it does not exist");
         roadMapRepository.delete(roadMap);
     }
+    @Async
+    public void delete(long id){
+        if (!roadMapRepository.existsById(id))
+            throw new DatabaseWriteError("Cannot delete RoadMap with id: " + id + " as it does not exist");
+        roadMapRepository.deleteById(id);
+    }
 }

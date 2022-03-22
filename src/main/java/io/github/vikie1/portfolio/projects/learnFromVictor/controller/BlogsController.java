@@ -11,8 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@RestController
-@RequestMapping("/api/lfv")
+@RestController @RequestMapping("/api/lfv")
 public class BlogsController {
     @Autowired
     BlogService blogService;
