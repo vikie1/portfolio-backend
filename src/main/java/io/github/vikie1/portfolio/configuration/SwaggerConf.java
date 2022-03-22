@@ -31,9 +31,17 @@ public class SwaggerConf {
     }
 
     @Bean
+    GroupedOpenApi brandGroupedOpenApi(){
+        return GroupedOpenApi.builder()
+                .group("Learn From Victor API")
+                .pathsToMatch("/api/lfv/**")
+                .build();
+    }
+
+    @Bean
     GroupedOpenApi userGroupedOpenApi() {
         return GroupedOpenApi.builder()
-                .group("Api Access")
+                .group("Other APIs")
                 .pathsToMatch("/api/**")
                 .build();
     }
