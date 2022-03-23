@@ -1,5 +1,7 @@
 package io.github.vikie1.portfolio.projects.learnFromVictor.entity;
 
+import org.hibernate.annotations.Type;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Set;
@@ -15,17 +17,20 @@ public class RoadMap {
     private String imgURL;
     private String description;
     private LocalDate postDate;
+    @Lob @Type(type = "org.hibernate.type.TextType")
+    private String explanation;
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.MERGE) @JoinColumn(name = "road_map_id")
     private Set<Topic> topics;
 
     public RoadMap() {}
 
-    public RoadMap(String name, String imgURL, String description, LocalDate postDate, String[] topics) {
+    public RoadMap(String name, String imgURL, String description, LocalDate postDate, String explanation, String[] topics) {
         setName(name);
         setDescription(description);
         setImgURL(imgURL);
         setLocalDate(postDate);
         setTopics(topics);
+        setExplanation(explanation);
     }
 
 
@@ -36,6 +41,7 @@ public class RoadMap {
     public String getImgURL() { return imgURL; }
     public Long getId() { return id; }
     public String getName() { return name; }
+    public String getExplanation() { return explanation; }
 
     //Just setters
     public void setId(Long id) { this.id = id; }
@@ -44,6 +50,7 @@ public class RoadMap {
     public void setImgURL(String imgURL) { this.imgURL = imgURL; }
     public void setName(String name) { this.name = name; }
     public void setTopics(Set<Topic> topics) { this.topics = topics; }
+    public void setExplanation(String explanation) { this.explanation = explanation; }
     public void setTopics(String[] topics) {
         for (String topic : topics) {
             this.topics.add(new Topic(topic));
