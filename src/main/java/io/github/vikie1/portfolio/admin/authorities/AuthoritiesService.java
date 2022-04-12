@@ -8,7 +8,7 @@ public class AuthoritiesService {
 
     @Autowired AuthoritiesRepo authoritiesRepo;
 
-    public void createAuthority(String username){ authoritiesRepo.save(new AuthoritiesEntity(username, "ROLE_ADMIN")); }
+    public void createAuthority(String username){ authoritiesRepo.save(new AuthoritiesEntity(username, "ROLE_BURNG")); }
 
     public void deleteAuthority(String username){ authoritiesRepo.deleteByUsername(username); }
 

@@ -28,6 +28,7 @@ public class SecurityProtocols extends WebSecurityConfigurerAdapter {
                 .and().csrf().ignoringAntMatchers("/api/**"); //disable csrf for API so that it's usable across different front ends
         http.authorizeRequests()
                 .antMatchers("/admin/**", "/actuator/**").hasRole("ADMIN")
+                .antMatchers("/burng/**").hasAnyRole("ADMIN, BURNG")
                 .antMatchers("/**").permitAll()
                 .and().formLogin().and().logout();
     }

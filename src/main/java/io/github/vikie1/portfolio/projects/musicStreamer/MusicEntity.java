@@ -15,7 +15,7 @@ public class MusicEntity {
         this.id = id;
     }
 
-    private String name, artist,musicUrl;
+    private String name, artist, musicUrl;
     public MusicEntity(){}
     public MusicEntity(String name, String artist, String musicUrl) {
         setMusicUrl(musicUrl);
