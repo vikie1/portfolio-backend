@@ -29,7 +29,7 @@ public class RoadMapService {
             if (!topicsRepository.existsByNameAllIgnoreCase(topic.getName())) topics.add(topicsRepository.save(topic));
             else topics.add(topicsRepository.getByNameAllIgnoreCase(topic.getName()));
         }
-        roadMap.setTopics(topics);
+        roadMap.setTopic(topics);
         roadMapRepository.save(roadMap);
     }
 
@@ -48,7 +48,7 @@ public class RoadMapService {
             else topics.add(topicsRepository.getByNameAllIgnoreCase(topic.getName()));
         }
         roadMap.setId(id);
-        roadMap.setTopics(topics);
+        roadMap.setTopic(topics);
         roadMapRepository.save(roadMap);
     }
 
