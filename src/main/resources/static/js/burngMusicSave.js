@@ -1,5 +1,5 @@
-const handleSubmit = (e) => {
-    e.preventDefault(); //prevent submit attempt
+const handleSubmit = e => {
+    e.preventDefault() //prevent submit attempt
 
     //get all the data we need
     const name = document.getElementById('typeMusicX').value;
@@ -10,6 +10,16 @@ const handleSubmit = (e) => {
     //prepare data for storage
     const musicUrl = "https://www.youtube.com/embed/" + pathName;
     const data = {name, artist, musicUrl};
+    const url = '/api/music/';
 
-    console.log(data);
+    //send data to server
+    fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    }).then(() => {
+        document.getElementById("success").innerHTML = "Done uploading";
+    });
 }
