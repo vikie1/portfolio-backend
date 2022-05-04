@@ -1,6 +1,7 @@
 package io.github.vikie1.portfolio.projects.learnFromVictor.entity.course;
 
 import io.github.vikie1.portfolio.projects.learnFromVictor.entity.Topic;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -11,6 +12,8 @@ public class CourseIdentifiers {
     private long courseId;
     @Column(unique = true)
     private String name;
+    @Lob
+    @Type(type = "org.hibernate.type.TextType")
     private String description;
     private String imgURL;
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "courseId", cascade = CascadeType.ALL)
