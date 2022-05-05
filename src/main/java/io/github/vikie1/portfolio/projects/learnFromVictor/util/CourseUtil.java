@@ -13,7 +13,7 @@ public class CourseUtil {
     public static Course retrieveCourse(ApiData.Course rawCourse) {
         if (rawCourse.name().isEmpty()) throw new InvalidDataError("Blog name and topics are missing");
         Set<Topic> topics = new HashSet<>();
-        for (String topic: rawCourse.topics()) topics.add(new Topic(topic));
+        for (String topic: rawCourse.topics()) { topics.add(new Topic(topic)); }
         Course course =  new Course(
                 rawCourse.postDate(),
                 rawCourse.chapter(),

@@ -35,11 +35,12 @@ public class CourseService {
         for (Topic topic : topics) {
             if(!topicsRepository.existsByNameAllIgnoreCase(topic.getName())) {
                 topicsToSave.add(topicsRepository.save(topic));
-            }else topicsRepository.getByNameAllIgnoreCase(topic.getName());
+            }else topicsToSave.add(topicsRepository.getByNameAllIgnoreCase(topic.getName()));
         }
         course.getCourseId().setTopic(topicsToSave);
         if (courseIdRepository.existsByNameAllIgnoreCase(course.getCourseId().getName())){
             CourseIdentifiers courseIdentifiers = courseIdRepository.findByNameAllIgnoreCase(course.getCourseId().getName());
+            topicsToSave.addAll(courseIdentifiers.getTopic());
             courseIdentifiers.setTopic(topicsToSave);
             course.setCourseId(courseIdRepository.save(courseIdentifiers));
         }
