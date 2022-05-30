@@ -7,6 +7,7 @@ import io.github.vikie1.portfolio.projects.learnFromVictor.error.InvalidDataErro
 import io.github.vikie1.portfolio.projects.learnFromVictor.repository.CourseIdRepository;
 import io.github.vikie1.portfolio.projects.learnFromVictor.repository.CourseRepository;
 import io.github.vikie1.portfolio.projects.learnFromVictor.repository.TopicsRepository;
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.EnableAsync;
@@ -40,7 +41,8 @@ public class CourseService {
         course.getCourseId().setTopic(topicsToSave);
         if (courseIdRepository.existsByNameAllIgnoreCase(course.getCourseId().getName())){
             CourseIdentifiers courseIdentifiers = courseIdRepository.findByNameAllIgnoreCase(course.getCourseId().getName());
-            topicsToSave.addAll(courseIdentifiers.getTopic());
+//            Hibernate.initialize(courseIdentifiers.getTopic());
+//            topicsToSave.addAll(courseIdentifiers.getTopic());
             courseIdentifiers.setTopic(topicsToSave);
             course.setCourseId(courseIdRepository.save(courseIdentifiers));
         }

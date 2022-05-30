@@ -2,6 +2,7 @@ package io.github.vikie1.portfolio.projects.learnFromVictor.entity.course;
 
 import io.github.vikie1.portfolio.projects.learnFromVictor.entity.Topic;
 import org.hibernate.annotations.Type;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -30,12 +31,13 @@ public class CourseIdentifiers {
         setTopic(topic);
     }
 
+    @Transactional
+    public Set<Topic> getTopic() { return topic; }
     public long getCourseId() { return courseId; }
     public String getName() { return name; }
     public Set<Course> getCourses() { return courses; }
     public String getDescription() { return description; }
     public String getImgURL() { return imgURL; }
-    public Set<Topic> getTopic() { return topic; }
 
     public void setCourseId(int courseId) { this.courseId = courseId; }
     public void setName(String name) { this.name = name; }
