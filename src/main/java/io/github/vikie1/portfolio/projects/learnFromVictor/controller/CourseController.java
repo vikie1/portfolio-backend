@@ -48,7 +48,7 @@ public class CourseController {
     public void deleteCourseSection(@PathVariable long id) {
         courseService.deleteCourseSegment(id);
     }
-    @DeleteMapping("/courses/{name}")
+    @DeleteMapping("/courses/full/{name}")
     public void deleteCourse(@PathVariable String name) {
         courseService.deleteFullCourse(name);
     }
