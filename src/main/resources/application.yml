@@ -7,7 +7,6 @@ server:
     enabled: true
 
 spring:
-
   datasource:
     # development database
 #    url: jdbc:postgresql://localhost:5432/portfolio
@@ -17,7 +16,6 @@ spring:
     url: ${JDBC_DATABASE_URL}
     username: ${JDBC_DATABASE_USERNAME}
     password: ${JDBC_DATABASE_PASSWORD}
-    driverClassName: org.postgresql.Driver
 
   # Spring JPA configs
   jpa:
