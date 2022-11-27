@@ -1,8 +1,7 @@
 # About Portfolio-backend
-This is the back-end to my portfolio although I plan on using it as the backend to some of my other projects. <br>
+This is the back-end to my portfolio, although I plan on using it as the backend to some of my other projects. <br>
 It is a Spring Boot application that is based on Java 17 <br>
-The live version is at <a href="https://pbvictor.herokuapp.com/">heroku</a>.<br>
-The first run might take sometime compared to subsequent runs because <a href="https://www.heroku.com/">Heroku service</a> takes the webapp to 'sleep' if it's unaccessed in 30 minutes.<br>
+The live version is at <a href="https://web-production-2b5d.up.railway.app/">heroku</a>.<br>
 The project has a swagger3 OpenAPI documentation, link is at the entry URL.<br>
 The live version of the project currently serves <a href="https://victormwangi.netlify.app/">my portfolio</a> although there are plans to spring to life front ends of the projects under the 'io.github.vikie1.portfolio.projects' package.
 
@@ -10,8 +9,7 @@ The live version of the project currently serves <a href="https://victormwangi.n
 ## Requirements
 <ul>
 <li>Java 17 -> check system.properties or build.gradle for changes</li>
-<li>Gradle >= 7.3 - for Java 17 support</li>
-<li>PostGresQl database</li>
+<li>PostGreSQl database</li>
 <li>An email and a mail server</li>
 </ul>
 
@@ -24,15 +22,13 @@ Recommended:
 Follow the configuration format in the application.yml file under the src/main/resources/ directory to:<br>
 => provide the link, username and password of your postgresql database instance, my production details are hidden and will be injected during runtime after deployment.<br>
 => provide the configuration of your mail server. <br>
-<strong>The application.yml file could contain sensitive files so you have to cross-check before making it public</strong>
+<strong>The application.yml file could contain sensitive files, so you have to cross-check before making it public</strong>
 
 ## Installation, packaging and execution
-We shall use gradle to carry out the build task.
+We shall use maven to carry out the build task.
 
 ->for local tests, use: <br>
-`$ gradle bootRun` -> (you can replace gradle with the ./gradlew for *nix/*nix-like systems or .\gradlew.bat for ms-windows)<br>
+`$ mvn spring-boot:run` -> (you can replace gradle with the ./mvnw for *nix/*nix-like systems or .\mvnw.bat for ms-windows)<br>
 ->Once you are done, then it's time to deploy<br>
-`$ gradle bootJar` -> this creates a portfolio-{version-number}.jar file under the build/libs directory.<br>
-`$ java -jar build/libs/portfolio-{version-number}.jar` -> to run locally<br>
-`$ heroku deploy:jar build/libs/portfolio-{version-number}.jar` -> to deploy to your heroku instance.<br>
-`$ heroku java:visualvm` -> can also be used to monitor the application locally using VisualVM
+`$ mvn clean package` -> this creates a portfolio-{version-number}.jar file under the build/libs directory.<br>
+`$ java -jar target/portfolio-{version-number}.jar` -> to run locally<br>
