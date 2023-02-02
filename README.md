@@ -31,4 +31,4 @@ We shall use maven to carry out the build task.
 `$ mvn spring-boot:run` -> (you can replace gradle with the ./mvnw for *nix/*nix-like systems or .\mvnw.bat for ms-windows)<br>
 ->Once you are done, then it's time to deploy<br>
 `$ mvn clean package` -> this creates a portfolio-{version-number}.jar file under the build/libs directory.<br>
-`$ java -jar target/portfolio-{version-number}.jar` -> to run locally<br>
+`$ java -jar target/portfolio-{version-number}.jar` -> to run the package. <br>
