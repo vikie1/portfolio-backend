@@ -1,6 +1,6 @@
 package io.github.vikie1.portfolio.admin;
 
-import io.github.vikie1.portfolio.admin.user.UserService;
+import io.github.vikie1.portfolio.auth.user.UserService;
 import io.github.vikie1.portfolio.articles.ArticleService;
 import io.github.vikie1.portfolio.projects.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;

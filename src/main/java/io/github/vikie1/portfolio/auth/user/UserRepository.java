@@ -1,4 +1,4 @@
-package io.github.vikie1.portfolio.admin.user;
+package io.github.vikie1.portfolio.auth.user;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

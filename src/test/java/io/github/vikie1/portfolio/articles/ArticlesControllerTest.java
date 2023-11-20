@@ -38,7 +38,7 @@ class ArticlesControllerTest {
     private TopicRepository topicRepository;
 
     @Test
-    void articleCreationWorks() throws Exception {
+    void articleCreationWorks() {
         Articles articles = new Articles();
         articles.setName("Test");
         articles.setDescription("Test");

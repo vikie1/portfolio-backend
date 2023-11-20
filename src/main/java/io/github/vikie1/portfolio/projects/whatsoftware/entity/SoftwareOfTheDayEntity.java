@@ -2,7 +2,7 @@ package io.github.vikie1.portfolio.projects.whatsoftware.entity;
 
 import org.hibernate.annotations.Type;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity @Table(name = "software_of_the_day")
 public class SoftwareOfTheDayEntity {
@@ -10,7 +10,7 @@ public class SoftwareOfTheDayEntity {
     private Long id;
     @Column(unique = true)
     private String software;
-    @Lob @Type(type = "org.hibernate.type.TextType")
+    @Lob
     private String description;
     private String downloadUrl;
     @Column(unique = true)

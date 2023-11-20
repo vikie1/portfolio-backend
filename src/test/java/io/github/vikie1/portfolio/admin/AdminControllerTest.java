@@ -1,8 +1,8 @@
 package io.github.vikie1.portfolio.admin;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.github.vikie1.portfolio.admin.user.UserEntity;
-import io.github.vikie1.portfolio.admin.user.UserService;
+import io.github.vikie1.portfolio.auth.user.UserEntity;
+import io.github.vikie1.portfolio.auth.user.UserService;
 import io.github.vikie1.portfolio.articles.ArticleService;
 import io.github.vikie1.portfolio.articles.Articles;
 import io.github.vikie1.portfolio.projects.ProjectService;

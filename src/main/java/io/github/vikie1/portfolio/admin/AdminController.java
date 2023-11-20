@@ -1,20 +1,16 @@
 package io.github.vikie1.portfolio.admin;
 
-import io.github.vikie1.portfolio.admin.user.UserEntity;
-import io.github.vikie1.portfolio.admin.user.UserService;
+import io.github.vikie1.portfolio.auth.role.RoleEntity;
+import io.github.vikie1.portfolio.auth.user.UserEntity;
+import io.github.vikie1.portfolio.auth.user.UserService;
 import io.github.vikie1.portfolio.articles.ArticleService;
 import io.github.vikie1.portfolio.articles.Articles;
 import io.github.vikie1.portfolio.projects.ProjectService;
 import io.github.vikie1.portfolio.projects.Projects;
-import io.swagger.v3.oas.annotations.OpenAPIDefinition;
-import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -36,6 +32,9 @@ public class AdminController {
     // create operations updates will stay here for the time being.
     @PostMapping(value = "/signUp")
     public String postSignup(UserEntity entity) {
+        RoleEntity role = new RoleEntity();
+        role.setName("ADMIN");
+        entity.addRole(role);
         userService.signUp(entity);
         return "redirect:/admin";
     }

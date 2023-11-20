@@ -1,5 +1,7 @@
 package io.github.vikie1.portfolio.admin.user;
 
+import io.github.vikie1.portfolio.auth.user.UserEntity;
+import io.github.vikie1.portfolio.auth.user.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;

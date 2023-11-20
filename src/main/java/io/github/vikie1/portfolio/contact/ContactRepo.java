@@ -5,7 +5,4 @@ import org.springframework.data.repository.CrudRepository;
 /**
  * ContactRepo
  */
-public interface ContactRepo extends CrudRepository<Contact, Integer>{
-
-    
-}
+public interface ContactRepo extends CrudRepository<Contact, Integer>{ }
