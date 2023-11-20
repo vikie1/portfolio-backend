@@ -1,0 +1,25 @@
+package io.github.vikie1.portfolio.error;
+
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.context.request.WebRequest;
+import org.springframework.web.server.ResponseStatusException;
+import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
+
+@ControllerAdvice
+public class RESTExceptionsHandler extends ResponseEntityExceptionHandler {
+
+    @ExceptionHandler(value = ResponseStatusException.class)
+    public ResponseEntity<ErrorEntity> handleAll(ResponseStatusException ex, WebRequest request) {
+        ErrorEntity apiError = new ErrorEntity(
+                request.toString(),
+                ex.getStatusCode().value(),
+                ex.getReason(),
+                ex.getLocalizedMessage()
+        );
+        return new ResponseEntity<>(apiError, new HttpHeaders(), apiError.statusCode());
+    }
+}
