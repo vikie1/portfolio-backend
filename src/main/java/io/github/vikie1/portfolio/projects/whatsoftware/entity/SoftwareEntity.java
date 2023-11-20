@@ -2,7 +2,7 @@ package io.github.vikie1.portfolio.projects.whatsoftware.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity @Table(name = "software")
 public class SoftwareEntity {
