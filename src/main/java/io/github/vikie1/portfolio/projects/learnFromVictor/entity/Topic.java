@@ -1,9 +1,8 @@
 package io.github.vikie1.portfolio.projects.learnFromVictor.entity;
 
-import io.github.vikie1.portfolio.projects.learnFromVictor.entity.course.Course;
 import io.github.vikie1.portfolio.projects.learnFromVictor.entity.course.CourseIdentifiers;
+import jakarta.persistence.*;
 
-import javax.persistence.*;
 import java.util.Set;
 
 @Entity
@@ -13,12 +12,24 @@ public class Topic {
     private Long id;
     @Column(nullable = false, unique = true)
     private String name;
-    @ManyToMany(mappedBy = "topic", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToMany(mappedBy = "topic", cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     Set<Blogs> blogs;
-    @ManyToMany(mappedBy = "topic", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToMany(mappedBy = "topic", cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     Set<CourseIdentifiers> courseIdentifiers;
-    @ManyToMany(mappedBy = "topics", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToMany(mappedBy = "topics", cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     Set<RoadMap> roadMaps;
+
+    public Set<RoadMap> getRoadMaps() {
+        return roadMaps;
+    }
+
+    public Set<CourseIdentifiers> getCourseIdentifiers() {
+        return courseIdentifiers;
+    }
+
+    public Set<Blogs> getBlogs() {
+        return blogs;
+    }
 
     public Topic(String name){
         setName(name);

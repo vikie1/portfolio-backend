@@ -4,7 +4,7 @@ import io.github.vikie1.portfolio.projects.learnFromVictor.entity.Topic;
 import org.hibernate.annotations.Type;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.util.Set;
 
 @Entity
@@ -14,7 +14,6 @@ public class CourseIdentifiers {
     @Column(unique = true)
     private String name;
     @Lob
-    @Type(type = "org.hibernate.type.TextType")
     private String description;
     private String imgURL;
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "courseId", cascade = CascadeType.ALL)

@@ -1,11 +1,9 @@
 package io.github.vikie1.portfolio.articles;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Lob;
-
-import org.hibernate.annotations.Type;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.Lob;
 
 @Entity
 public class Articles {
@@ -18,7 +16,6 @@ public class Articles {
     private String description;
     private String topic;
     @Lob
-    @Type(type = "org.hibernate.type.TextType")
     private String fullArticle;
 
     /**

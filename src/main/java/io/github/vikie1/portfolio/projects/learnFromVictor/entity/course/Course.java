@@ -3,7 +3,7 @@ package io.github.vikie1.portfolio.projects.learnFromVictor.entity.course;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Type;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.time.LocalDate;
 
 @Entity
@@ -13,7 +13,7 @@ public class Course {
     private String name;
     private LocalDate postDate;
     private double chapter;
-    @Lob @Type(type = "org.hibernate.type.TextType")
+    @Lob
     private String content;
     @ManyToOne(optional = false) @JoinColumn(name = "course_id_course_id", nullable = false)
     private CourseIdentifiers courseId;

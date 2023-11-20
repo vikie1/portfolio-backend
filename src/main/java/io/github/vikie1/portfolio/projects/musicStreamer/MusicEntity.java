@@ -1,6 +1,6 @@
 package io.github.vikie1.portfolio.projects.musicStreamer;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 public class MusicEntity {

@@ -1,13 +1,11 @@
 package io.github.vikie1.portfolio.projects;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 
 @Entity
 public class Projects {
-    
-
     public Projects(String name, String imgUrl, String title, String description, String url){
         this.description = description;
         this.name = name;

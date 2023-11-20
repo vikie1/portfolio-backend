@@ -1,15 +1,14 @@
 package io.github.vikie1.portfolio.contact;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 
 /**
  * Contact
  */
 @Entity
 public class Contact {
-
     public Contact(String name, String email, String subject, String message){
         this.email = email;
         this.message = message;

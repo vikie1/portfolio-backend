@@ -1,19 +1,26 @@
-package io.github.vikie1.portfolio.admin.user;
+package io.github.vikie1.portfolio.auth.user;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import io.github.vikie1.portfolio.auth.role.RoleEntity;
+import jakarta.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
 public class UserEntity {
 
-    @Id @Column(nullable = false)
+    @Id
+    @Column(nullable = false)
     private String username;
     private String password;
     private boolean enabled;
-
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+    @JoinTable(
+            name= "users_roles",
+            joinColumns={@JoinColumn(name= "USER_ID")},
+            inverseJoinColumns={@JoinColumn(name= "ROLE_ID")})
+    private List<RoleEntity> roles = new ArrayList<>();
     public UserEntity(){}
     public UserEntity(String username, String password, boolean enabled) {
         this.username = username;
@@ -45,4 +52,14 @@ public class UserEntity {
         this.username = username;
     }
 
+    public void setRoles(List<RoleEntity> roles) {
+        this.roles = roles;
+    }
+    public List<RoleEntity> getRoles() {
+        return roles;
+    }
+
+    public void addRole(RoleEntity role){
+        roles.add(role);
+    }
 }
