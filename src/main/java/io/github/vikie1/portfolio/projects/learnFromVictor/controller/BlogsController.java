@@ -37,6 +37,12 @@ public class BlogsController {
         response.put("blog", blogService.getByTopics(topics));
         return response;
     }
+    @GetMapping("/blogs/published")
+    public Map<String, List<Blogs>> getPublished() {
+        Map<String,List<Blogs>> response = new HashMap<>();
+        response.put("blog", blogService.getByPublished(true));
+        return response;
+    }
 
     //PUT
     @PutMapping("/blogs")

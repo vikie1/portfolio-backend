@@ -46,6 +46,9 @@ public class BlogService {
         String[] topicsList = topics.replaceAll("\\s*,\\s*", ",").split(",");
         return blogRepository.findAllByTopicIn(new HashSet<>(topicsRepository.findAllByNameInAllIgnoreCase(List.of(topicsList))));
     }
+    public List<Blogs> getByPublished(boolean published){
+        return blogRepository.findAllByPublishedIn(published);
+    }
 
     //UPDATE
     @Async

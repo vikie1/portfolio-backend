@@ -7,7 +7,6 @@ import java.util.Set;
 
 @Entity
 public class Blogs {
-
     @Id @Column(name = "id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -16,6 +15,7 @@ public class Blogs {
     private String imgURL;
     private String description;
     private LocalDate postDate;
+    private boolean published;
     @Lob
     private String post;
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.MERGE) @JoinColumn(name = "blogs_id")
@@ -30,7 +30,6 @@ public class Blogs {
         setPost(post);
     }
 
-    //Just getters
     public Set<Topic> getTopic() { return topic; }
     public String getDescription() { return description; }
     public LocalDate getPostDate() { return postDate; }
@@ -38,8 +37,8 @@ public class Blogs {
     public Long getId() { return id; }
     public String getName() { return name; }
     public String getPost() { return post; }
+    public boolean isPublished() { return published; }
 
-    //Just setters
     public void setId(Long id) { this.id = id; }
     public void setDescription(String description) { this.description = description; }
     public void setLocalDate(LocalDate localDate) { this.postDate = localDate; }
@@ -47,4 +46,6 @@ public class Blogs {
     public void setName(String name) { this.name = name; }
     public void setTopic(Set<Topic> topic) { this.topic = topic; }
     public void setPost(String post) { this.post = post; }
+
+    public void setPublished(boolean published) { this.published = published; }
 }

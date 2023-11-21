@@ -9,6 +9,7 @@ import java.util.Set;
 
 public interface BlogRepository extends JpaRepository<Blogs, Long> {
     List<Blogs> findAllByTopicIn(Set<Topic> topics);
+    List<Blogs> findAllByPublishedIn(boolean published);
     Blogs findByNameAllIgnoreCase(String name);
     boolean existsByNameAllIgnoreCase(String name);
 }
