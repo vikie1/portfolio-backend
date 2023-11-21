@@ -123,7 +123,7 @@ const renderBlogArticle = (title, body, hide) => {
 };
 
 const getArticles = () => {
-  getServer("/api/blog", false, false);
+  getServer("/api/lfv/blogs", false, false);
 };
 
 const handleBtnClick = (id) => {
@@ -136,7 +136,7 @@ const handleBtnClick = (id) => {
 const getArticle = () => {
   const pathVariables = window.location.pathname.split("/");
   getServer(
-    "/api/blog/" + pathVariables[2] + "/" + pathVariables[3],
+    "/api/lfv/blogs" + pathVariables[2] + "/" + pathVariables[3],
     true,
     false
   );
