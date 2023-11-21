@@ -9,7 +9,6 @@ import java.util.List;
 @Entity
 @Table(name = "users")
 public class UserEntity {
-
     @Id
     @Column(nullable = false)
     private String username;

@@ -7,12 +7,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-
-
 @RestController
 public class AliveCheckAPI {
-    
-    @RequestMapping(value="/hi", method=RequestMethod.GET)
+    @GetMapping("/hi")
     public HashMap<String, String> checkStatus() {
         HashMap<String, String> status = new HashMap<>();
         status.put("status", "alive");

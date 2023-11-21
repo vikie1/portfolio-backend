@@ -7,7 +7,6 @@ import java.util.Set;
 
 @Entity @Table(name = "type")
 public class TypeEntity {
-
     @Id @Column(name = "id", nullable = false) @GeneratedValue
     private Long id;
     @Column(nullable = false, unique = true)

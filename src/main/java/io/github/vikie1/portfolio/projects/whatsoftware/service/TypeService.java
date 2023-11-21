@@ -11,7 +11,6 @@ import java.util.List;
 
 @Service
 public class TypeService {
-
     @Autowired
     TypeRepository typeRepository;
     @Autowired
@@ -34,7 +33,7 @@ public class TypeService {
 
     //Read
     public List<TypeEntity> getAllByCategory(CategoryEntity categoryEntity){
-        return new ArrayList<TypeEntity>( typeRepository.findAllByCategoryEntity(categoryEntity));
+        return new ArrayList<>(typeRepository.findAllByCategoryEntity(categoryEntity));
     }
     public TypeEntity getType(String type){
         if (!typeRepository.existsByTypeAllIgnoreCase(type)) return null;

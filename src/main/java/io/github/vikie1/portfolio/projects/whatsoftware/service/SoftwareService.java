@@ -12,7 +12,6 @@ import java.util.List;
 
 @Service
 public class SoftwareService {
-
     @Autowired
     TypeService typeService;
     @Autowired
@@ -31,7 +30,7 @@ public class SoftwareService {
     }
 
     //Read
-    public SoftwareEntity getById(Long id){ return softwareRepository.getById(id); }
+    public SoftwareEntity getById(Long id){ return softwareRepository.findById(id).orElse(null); }
     public SoftwareEntity getBySoftwareName(String name) { return softwareRepository.findByNameAllIgnoreCase(name); }
     public List<SoftwareEntity> getSoftwareByCategory(CategoryEntity category){
         List<TypeEntity> types = typeService.getAllByCategory(category);
@@ -57,7 +56,7 @@ public class SoftwareService {
     public void clearSoftware(){ softwareRepository.deleteAll(); }
     public void deleteByName(String name){ softwareRepository.deleteByName(name); }
 
-    static class SoftwareNotFoundException extends Exception{
+    public static class SoftwareNotFoundException extends Exception{
         SoftwareNotFoundException(String exceptionMessage){ super(exceptionMessage); }
     }
 }

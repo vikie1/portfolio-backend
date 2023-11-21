@@ -18,10 +18,11 @@ import java.io.IOException;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 @RestController @RequestMapping("/api/project")
 public class GetRequestsController {
-
     @Autowired
     SoftwareOfTheDayService softwareOfTheDayService;
     @Autowired
@@ -33,7 +34,9 @@ public class GetRequestsController {
         int day = Calendar.getInstance().get(Calendar.DAY_OF_WEEK);
         if (day == Calendar.SUNDAY) {
             try { response.sendRedirect(request.getContextPath() + "/api/SotD"); }
-            catch (IOException e) { e.printStackTrace(); }
+            catch (IOException e) {
+                Logger.getLogger("Navigation").log(Level.SEVERE, e.toString());
+            }
         }
         return softwareOfTheDayService.getSoftwareOfTheDayByDate(DayOfTheWeek.getDayById(day));
     }
@@ -41,7 +44,7 @@ public class GetRequestsController {
     public SoftwareOfTheDayEntity getSoftwareOfTheDayByDay(@PathVariable String day, HttpServletRequest request, HttpServletResponse response){
         if (DayOfTheWeek.getIdByDay(day) == Calendar.SUNDAY) {
             try { response.sendRedirect(request.getContextPath() + "/api/SotW"); }
-            catch (IOException e) { e.printStackTrace(); }
+            catch (IOException e) { Logger.getLogger("Navigation").log(Level.SEVERE, e.toString()); }
         }
         return softwareOfTheDayService.getSoftwareOfTheDayByDate(day);
     }
@@ -54,7 +57,7 @@ public class GetRequestsController {
         int day = Calendar.getInstance().get(Calendar.DAY_OF_WEEK);
         if (day != Calendar.SUNDAY) {
             try { response.sendRedirect(request.getContextPath() + "/api/SotD"); }
-            catch (IOException e) { e.printStackTrace(); }
+            catch (IOException e) { Logger.getLogger("Navigation").log(Level.SEVERE, e.toString()); }
         }
         return softwareOfTheDayService.getWeeklySoftware();
     }

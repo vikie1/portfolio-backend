@@ -8,11 +8,10 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ProjectService {
-    
     @Autowired
     ProjectRepo projectRepo;
 
-    public List<Projects> getProjects() { return new ArrayList<Projects>(projectRepo.findAll()); }
+    public List<Projects> getProjects() { return new ArrayList<>(projectRepo.findAll()); }
 
     public void addProject(Projects projects) {
         projectRepo.save(projects);

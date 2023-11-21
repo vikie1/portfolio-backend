@@ -7,13 +7,10 @@ import org.springframework.web.bind.annotation.*;
 
 import io.github.vikie1.portfolio.mail.SendMailService;
 
-
 @RestController
-public class ContactControler {
-    
+public class ContactController {
     @Autowired
     ContactService contactService;
-
     @Autowired
     SendMailService sendMailService;
 

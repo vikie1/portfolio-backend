@@ -12,6 +12,9 @@ import org.springframework.stereotype.Service;
 
 import io.github.vikie1.portfolio.contact.Contact;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 @Service
 @EnableAsync
 public class SendMail {
@@ -36,7 +39,7 @@ public class SendMail {
                             + "I'll review the data and get back to you. <br> <br> HAVE A GREAT DAY.", true);
         } catch (MessagingException e) {
             //Auto-generated catch block
-            e.printStackTrace();
+            Logger.getLogger("Mail").log(Level.SEVERE, e.toString());
         }
         javaMailSender.send(mimeMessage);
     }
@@ -56,7 +59,7 @@ public class SendMail {
                     + subject + "<br>Message: " + message + "<br> <br> GOOD LUCK WITH YOUR NEW CLIENT!", true);
         } catch (MessagingException e) {
             // Auto-generated catch block
-            e.printStackTrace();
+            Logger.getLogger("Mail").log(Level.SEVERE, e.toString());
         }
         javaMailSender.send(mimeMessage);
     }

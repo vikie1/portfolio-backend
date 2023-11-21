@@ -9,7 +9,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class BlogUtil {
-
     public static Blogs retrieveBlog(ApiData.Blog rawBlog){
         if (rawBlog.name().isEmpty() || rawBlog.topics().length == 0)
             throw new InvalidDataError("Blog name and topics are missing");

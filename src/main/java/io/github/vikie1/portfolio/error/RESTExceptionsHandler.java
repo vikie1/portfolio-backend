@@ -1,7 +1,6 @@
 package io.github.vikie1.portfolio.error;
 
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -11,7 +10,6 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 
 @ControllerAdvice
 public class RESTExceptionsHandler extends ResponseEntityExceptionHandler {
-
     @ExceptionHandler(value = ResponseStatusException.class)
     public ResponseEntity<ErrorEntity> handleAll(ResponseStatusException ex, WebRequest request) {
         ErrorEntity apiError = new ErrorEntity(

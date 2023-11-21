@@ -8,7 +8,6 @@ import org.springframework.lang.NonNull;
 /**
  * This class just help reduce the number/size of JSON objects sent to controller
  * It does so by constructing Entity classes from pojo thus reducing redundancy in JSON objects.
- * Am I doing this because I've not fully grasped relational sql
  */
 
 public class DeriveEntityFromPojo {
@@ -16,9 +15,9 @@ public class DeriveEntityFromPojo {
     // Construct SoftwareEntity
     static public SoftwareEntity constructSoftwareEntity(@NonNull SoftwareAttributesPojo softwareAttributesPojo){
         return new SoftwareEntity(
-                softwareAttributesPojo.getSoftwareName(),
-                softwareAttributesPojo.getDescription(),
-                softwareAttributesPojo.getDownloadUrl(),
+                softwareAttributesPojo.softwareName(),
+                softwareAttributesPojo.description(),
+                softwareAttributesPojo.downloadUrl(),
                 constructTypeEntity(softwareAttributesPojo)
         );
     }
@@ -26,7 +25,7 @@ public class DeriveEntityFromPojo {
     //Construct TypeEntity
     static public TypeEntity constructTypeEntity(@NonNull SoftwareAttributesPojo softwareAttributesPojo){
         return new TypeEntity(
-                softwareAttributesPojo.getType(),
+                softwareAttributesPojo.type(),
                 createCategory(softwareAttributesPojo),
                 softwareAttributesPojo.isNested()
         );
@@ -34,7 +33,7 @@ public class DeriveEntityFromPojo {
 
     public static CategoryEntity createCategory(SoftwareAttributesPojo softwareAttributesPojo){
         return new CategoryEntity(
-                softwareAttributesPojo.getCategory(),
+                softwareAttributesPojo.category(),
                 null
         );
     }

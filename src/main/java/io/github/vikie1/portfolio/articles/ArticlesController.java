@@ -8,14 +8,11 @@ import org.springframework.web.bind.annotation.*;
 import java.util.HashMap;
 import java.util.List;
 
-
 @RestController
 @RequestMapping("/api")
 public class ArticlesController {
-    
     @Autowired
     ArticleService articleService;
-
     @RequestMapping(value="/blog", method=RequestMethod.GET)
     @Operation(summary = "will return all the present articles")
     public HashMap<String, List<Articles>> requestArticles() {

@@ -1,9 +1,8 @@
 package io.github.vikie1.portfolio.projects.learnFromVictor.entity.course;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.hibernate.annotations.Type;
-
 import jakarta.persistence.*;
+
 import java.time.LocalDate;
 
 @Entity

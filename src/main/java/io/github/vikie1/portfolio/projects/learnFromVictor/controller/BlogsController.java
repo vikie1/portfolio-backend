@@ -5,9 +5,7 @@ import io.github.vikie1.portfolio.projects.learnFromVictor.entity.dao.ApiData;
 import io.github.vikie1.portfolio.projects.learnFromVictor.service.BlogService;
 import io.github.vikie1.portfolio.projects.learnFromVictor.util.BlogUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.HashMap;
 import java.util.List;

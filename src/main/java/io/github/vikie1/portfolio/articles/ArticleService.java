@@ -1,17 +1,15 @@
 package io.github.vikie1.portfolio.articles;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
-
 import io.github.vikie1.portfolio.articles.topics.TopicService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
 @Service
 public class ArticleService {
-
     @Autowired
     ArticlesRepo articlesRepo;
     @Autowired

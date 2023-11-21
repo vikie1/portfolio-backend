@@ -1,7 +1,5 @@
 package io.github.vikie1.portfolio.projects.whatsoftware.entity;
 
-import org.hibernate.annotations.Type;
-
 import jakarta.persistence.*;
 
 @Entity @Table(name = "software_of_the_day")

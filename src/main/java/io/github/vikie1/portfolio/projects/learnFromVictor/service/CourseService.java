@@ -41,8 +41,6 @@ public class CourseService {
         course.getCourseId().setTopic(topicsToSave);
         if (courseIdRepository.existsByNameAllIgnoreCase(course.getCourseId().getName())){
             CourseIdentifiers courseIdentifiers = courseIdRepository.findByNameAllIgnoreCase(course.getCourseId().getName());
-//            Hibernate.initialize(courseIdentifiers.getTopic());
-//            topicsToSave.addAll(courseIdentifiers.getTopic());
             courseIdentifiers.setTopic(topicsToSave);
             course.setCourseId(courseIdRepository.save(courseIdentifiers));
         }

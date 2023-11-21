@@ -11,12 +11,10 @@ import io.github.vikie1.portfolio.projects.whatsoftware.service.ControllerLinkSe
 
 @RestController @RequestMapping("/admin")
 public class WriteRequestsController {
-
     @Autowired
     ControllerLinkService controllerLinkService;
 
     //Create
     @PostMapping("/soft")
     public void postNewSoftwareDetails(@RequestBody SoftwareAttributesPojo softwareAttributesPojo){ controllerLinkService.postSoftwareDetails(softwareAttributesPojo); }
-
 }

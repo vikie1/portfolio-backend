@@ -6,7 +6,6 @@ import jakarta.persistence.*;
 
 @Entity @Table(name = "software")
 public class SoftwareEntity {
-
     @Id @Column(name = "id", nullable = false) @GeneratedValue
     private Long id;
     @Column(nullable = false, unique = true)

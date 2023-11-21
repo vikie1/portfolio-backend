@@ -1,10 +1,9 @@
 package io.github.vikie1.portfolio.projects.learnFromVictor.entity.course;
 
 import io.github.vikie1.portfolio.projects.learnFromVictor.entity.Topic;
-import org.hibernate.annotations.Type;
+import jakarta.persistence.*;
 import org.springframework.transaction.annotation.Transactional;
 
-import jakarta.persistence.*;
 import java.util.Set;
 
 @Entity

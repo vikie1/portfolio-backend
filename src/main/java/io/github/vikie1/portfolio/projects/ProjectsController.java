@@ -8,11 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-
 @RestController
 @RequestMapping("/api")
 public class ProjectsController {
-    
     @Autowired ProjectService projectService;
 
     @RequestMapping(value="/projects", method=RequestMethod.GET)
@@ -21,5 +19,4 @@ public class ProjectsController {
         projects.put("projects", projectService.getProjects());
         return projects;
     }
-
 }

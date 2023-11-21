@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 @Service
 public class ControllerLinkService {
@@ -36,9 +38,8 @@ public class ControllerLinkService {
         try {
             softwareService.updateSoftware(DeriveEntityFromPojo.constructSoftwareEntity(softwareAttributesPojo));
             categoryService.updateCategory(DeriveEntityFromPojo.createCategory(softwareAttributesPojo));
-        } catch (
-                SoftwareService.SoftwareNotFoundException | CategoryService.CategoryNotFoundException e) {
-            e.printStackTrace();
+        } catch (SoftwareService.SoftwareNotFoundException | CategoryService.CategoryNotFoundException e) {
+            Logger.getLogger("Software").log(Level.SEVERE, e.toString());
         }
     }
 
