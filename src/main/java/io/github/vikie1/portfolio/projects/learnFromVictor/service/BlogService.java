@@ -5,6 +5,7 @@ import io.github.vikie1.portfolio.projects.learnFromVictor.entity.Topic;
 import io.github.vikie1.portfolio.projects.learnFromVictor.error.DatabaseWriteError;
 import io.github.vikie1.portfolio.projects.learnFromVictor.repository.BlogRepository;
 import io.github.vikie1.portfolio.projects.learnFromVictor.repository.TopicsRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.EnableAsync;
@@ -25,6 +26,7 @@ public class BlogService {
     @Async
     public void save(Blogs blog){
         if (blogRepository.existsByNameAllIgnoreCase(blog.getName()))
+//            update(blog);
             throw new DatabaseWriteError("A blog with the name '" + blog.getName() + "' exists, consider updating if change is needed");
         Set<Topic> current = blog.getTopic();
         Set<Topic> required = new HashSet<>();
@@ -47,7 +49,7 @@ public class BlogService {
         return blogRepository.findAllByTopicIn(topicsRepository.findAllByNameInAllIgnoreCase(List.of(topicsList)));
     }
     public List<Blogs> getByPublished(boolean published){
-        return blogRepository.findAllByPublishedIn(published);
+        return blogRepository.findAllByPublished(published);
     }
 
     //UPDATE
@@ -62,6 +64,7 @@ public class BlogService {
         Blogs existing = blogRepository.findByNameAllIgnoreCase(blog.getName());
         blog.setTopic(required);
         blog.setId(existing.getId());
+        blog.setId(1L);
         blogRepository.save(blog);
     }
 

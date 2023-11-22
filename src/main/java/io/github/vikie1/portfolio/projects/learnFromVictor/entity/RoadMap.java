@@ -2,6 +2,7 @@ package io.github.vikie1.portfolio.projects.learnFromVictor.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import org.hibernate.Length;
 
 import java.time.LocalDate;
 import java.util.HashSet;
@@ -18,7 +19,7 @@ public class RoadMap {
     private String imgURL;
     private String description;
     private LocalDate postDate;
-    @Lob
+    @Column(length = Length.LOB_DEFAULT)
     private String explanation;
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.MERGE) @JoinColumn(name = "road_map_id")
 	private Set<Topic> topics = new HashSet<>();

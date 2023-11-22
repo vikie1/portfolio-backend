@@ -1,5 +1,6 @@
 package io.github.vikie1.portfolio.projects.learnFromVictor.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.github.vikie1.portfolio.projects.learnFromVictor.entity.course.CourseIdentifiers;
 import jakarta.persistence.*;
 
@@ -19,14 +20,17 @@ public class Topic {
     @ManyToMany(mappedBy = "topics", cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     Set<RoadMap> roadMaps;
 
+    @JsonIgnore
     public Set<RoadMap> getRoadMaps() {
         return roadMaps;
     }
 
+    @JsonIgnore
     public Set<CourseIdentifiers> getCourseIdentifiers() {
         return courseIdentifiers;
     }
 
+    @JsonIgnore
     public Set<Blogs> getBlogs() {
         return blogs;
     }

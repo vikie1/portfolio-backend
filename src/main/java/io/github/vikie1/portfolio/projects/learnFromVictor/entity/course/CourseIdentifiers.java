@@ -2,6 +2,7 @@ package io.github.vikie1.portfolio.projects.learnFromVictor.entity.course;
 
 import io.github.vikie1.portfolio.projects.learnFromVictor.entity.Topic;
 import jakarta.persistence.*;
+import org.hibernate.Length;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Set;
@@ -12,7 +13,7 @@ public class CourseIdentifiers {
     private long courseId;
     @Column(unique = true)
     private String name;
-    @Lob
+    @Column(length = Length.LOB_DEFAULT)
     private String description;
     private String imgURL;
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "courseId", cascade = CascadeType.ALL)

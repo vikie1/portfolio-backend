@@ -1,9 +1,7 @@
 package io.github.vikie1.portfolio.articles;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Lob;
+import jakarta.persistence.*;
+import org.hibernate.Length;
 
 @Entity
 public class Articles {
@@ -15,7 +13,7 @@ public class Articles {
     private String imgURL;
     private String description;
     private String topic;
-    @Lob
+    @Column(length = Length.LOB_DEFAULT)
     private String fullArticle;
 
     /**

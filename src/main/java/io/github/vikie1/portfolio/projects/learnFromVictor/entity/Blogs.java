@@ -1,6 +1,7 @@
 package io.github.vikie1.portfolio.projects.learnFromVictor.entity;
 
 import jakarta.persistence.*;
+import org.hibernate.Length;
 
 import java.time.LocalDate;
 import java.util.Set;
@@ -16,7 +17,7 @@ public class Blogs {
     private String description;
     private LocalDate postDate;
     private boolean published;
-    @Lob
+    @Column(length = Length.LOB_DEFAULT)
     private String post;
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.MERGE) @JoinColumn(name = "blogs_id")
     private Set<Topic> topic;

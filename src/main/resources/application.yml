@@ -9,9 +9,9 @@ server:
 spring:
   datasource:
     # development database
-   url: jdbc:postgresql://localhost:5432/portfolio
-   username: victor
-   password: victorMwas1
+    url: jdbc:postgresql://localhost:5432/portfolio
+    username: victor
+    password: victorMwas1
     #Database to be injected by hosting service
     # url: ${JDBC_DATABASE_URL}
     # username: ${JDBC_DATABASE_USERNAME}
