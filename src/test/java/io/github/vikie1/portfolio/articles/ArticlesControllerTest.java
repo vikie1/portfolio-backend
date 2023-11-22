@@ -10,9 +10,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
 
-import java.util.HashMap;
-import java.util.List;
-
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
@@ -28,8 +25,6 @@ class ArticlesControllerTest {
     private MockMvc mockMvc;
     @MockBean
     private ArticlesRepo articlesRepo;
-    @Autowired
-    private ArticleService articleService;
     @Autowired
     private ArticlesController articlesController;
     @Autowired
