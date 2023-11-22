@@ -3,6 +3,7 @@ package io.github.vikie1.portfolio.projects.learnFromVictor.controller;
 import io.github.vikie1.portfolio.projects.learnFromVictor.entity.Blogs;
 import io.github.vikie1.portfolio.projects.learnFromVictor.entity.dao.ApiData;
 import io.github.vikie1.portfolio.projects.learnFromVictor.service.BlogService;
+import io.github.vikie1.portfolio.projects.learnFromVictor.service.BlogService.BlogWithRelated;
 import io.github.vikie1.portfolio.projects.learnFromVictor.util.BlogUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -25,21 +26,25 @@ public class BlogsController {
     //GET
     @GetMapping("/blogs")
     public Map<String, List<Blogs>> getBlogs(){
-        Map<String,List<Blogs>> response = new HashMap<>();
+        Map<String, List<Blogs>> response = new HashMap<>();
         response.put("blog", blogService.getAll());
         return response;
     }
-    @GetMapping("/blogs/{topics}")
+    @GetMapping("/blogs/topics/{topics}")
     public Map<String, List<Blogs>> getByTopics(@PathVariable("topics") String topics){
-        Map<String,List<Blogs>> response = new HashMap<>();
+        Map<String, List<Blogs>> response = new HashMap<>();
         response.put("blog", blogService.getByTopics(topics));
         return response;
     }
     @GetMapping("/blogs/published")
     public Map<String, List<Blogs>> getPublished() {
-        Map<String,List<Blogs>> response = new HashMap<>();
+        Map<String, List<Blogs>> response = new HashMap<>();
         response.put("blog", blogService.getByPublished(true));
         return response;
+    }
+    @GetMapping("/blogs/id/{id}")
+    public BlogWithRelated getBlogAndRelatedArticles(@PathVariable("id") long id){
+        return blogService.getWithRelated(id);
     }
 
     //PUT
@@ -47,6 +52,6 @@ public class BlogsController {
     public void updateBlog(@RequestBody ApiData.Blog blog){blogService.update(BlogUtil.retrieveBlog(blog));}
 
     //DELETE
-    @DeleteMapping("/blogs/{id}")
+    @DeleteMapping("/blogs/id/{id}")
     public void deleteBlog(@PathVariable("id") long id){blogService.delete(id);}
 }

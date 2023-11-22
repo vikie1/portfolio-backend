@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service @EnableAsync
 public class BlogService {
@@ -25,7 +26,6 @@ public class BlogService {
     @Async
     public void save(Blogs blog){
         if (blogRepository.existsByNameAllIgnoreCase(blog.getName()))
-//            update(blog);
             throw new DatabaseWriteError("A blog with the name '" + blog.getName() + "' exists, consider updating if change is needed");
         Set<Topic> current = blog.getTopic();
         Set<Topic> required = new HashSet<>();
@@ -50,6 +50,18 @@ public class BlogService {
     public List<Blogs> getByPublished(boolean published){
         return blogRepository.findAllByPublished(published);
     }
+    public Blogs getById(long id){
+        return blogRepository.findById(id).orElse(null);
+    }
+    public BlogWithRelated getWithRelated(long id){
+        Blogs blog = getById(id);
+        List<Blogs> blogs = null;
+        if (blog != null) blogs = getByTopics(blog.getTopic().stream().map(Topic::getName).collect(Collectors.joining(" ,")));
+        return new BlogWithRelated(
+            blog,
+            blogs
+        );
+    }
 
     //UPDATE
     @Async
@@ -63,7 +75,6 @@ public class BlogService {
         Blogs existing = blogRepository.findByNameAllIgnoreCase(blog.getName());
         blog.setTopic(required);
         blog.setId(existing.getId());
-        blog.setId(1L);
         blogRepository.save(blog);
     }
 
@@ -74,4 +85,6 @@ public class BlogService {
     public void delete(long id){
         if (blogRepository.existsById(id)) blogRepository.deleteById(id);
     }
+
+    public record BlogWithRelated(Blogs current, List<Blogs> related) {}
 }
