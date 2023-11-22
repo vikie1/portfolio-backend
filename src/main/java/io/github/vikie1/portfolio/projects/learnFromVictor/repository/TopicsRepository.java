@@ -7,6 +7,6 @@ import java.util.Set;
 
 public interface TopicsRepository extends JpaRepository<Topic, Long> {
     Topic getByNameAllIgnoreCase(String name);
-    Set<Topic> findAllByNameInAllIgnoreCase(Iterable<String> names);
+    Set<Topic> findAllByNameIn(Iterable<String> names);
     boolean existsByNameAllIgnoreCase(String name);
 }
