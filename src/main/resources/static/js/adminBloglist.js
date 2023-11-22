@@ -1,3 +1,5 @@
+import { getUrl } from "./urls";
+
 const getServer = (url, isArticle, hide) => {
   const abortController = new AbortController();
   const data = (async () => {
@@ -123,7 +125,7 @@ const renderBlogArticle = (title, body, hide) => {
 };
 
 const getArticles = () => {
-  getServer("/api/lfv/blogs", false, false);
+  getServer(getUrl("lfvBlogAPI"), false, false);
 };
 
 const handleBtnClick = (id) => {
@@ -136,7 +138,7 @@ const handleBtnClick = (id) => {
 const getArticle = () => {
   const pathVariables = window.location.pathname.split("/");
   getServer(
-    "/api/lfv/blogs" + pathVariables[2] + "/" + pathVariables[3],
+    getUrl("lfvBlogAPI") + pathVariables[2] + "/" + pathVariables[3],
     true,
     false
   );
