@@ -33,7 +33,7 @@ public class AdminController {
     @PostMapping(value = "/signUp")
     public String postSignup(UserEntity entity) {
         RoleEntity role = new RoleEntity();
-        role.setName("ADMIN");
+        role.setName("ROLE_ADMIN");
         entity.addRole(role);
         userService.signUp(entity);
         return "redirect:/admin";
