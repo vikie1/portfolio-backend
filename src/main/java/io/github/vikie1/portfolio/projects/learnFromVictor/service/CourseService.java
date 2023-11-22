@@ -7,7 +7,6 @@ import io.github.vikie1.portfolio.projects.learnFromVictor.error.InvalidDataErro
 import io.github.vikie1.portfolio.projects.learnFromVictor.repository.CourseIdRepository;
 import io.github.vikie1.portfolio.projects.learnFromVictor.repository.CourseRepository;
 import io.github.vikie1.portfolio.projects.learnFromVictor.repository.TopicsRepository;
-import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.EnableAsync;

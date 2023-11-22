@@ -5,7 +5,6 @@ import io.github.vikie1.portfolio.projects.learnFromVictor.entity.Topic;
 import io.github.vikie1.portfolio.projects.learnFromVictor.error.DatabaseWriteError;
 import io.github.vikie1.portfolio.projects.learnFromVictor.repository.BlogRepository;
 import io.github.vikie1.portfolio.projects.learnFromVictor.repository.TopicsRepository;
-import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.EnableAsync;

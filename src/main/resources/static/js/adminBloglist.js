@@ -157,6 +157,7 @@ const handleBtnDel = (id) => {
     return false;
   });
 };
+
 const getCookie = (name) => {
   if (!document.cookie) {
     return null;
