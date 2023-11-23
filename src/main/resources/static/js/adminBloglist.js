@@ -54,6 +54,8 @@ const createArticleCard = (blog, related) => {
   const btntext = document.createTextNode("Edit");
   const btndel = document.createElement("button");
   const btndeltext = document.createTextNode("Delete");
+  const btnPublish = document.createElement("button");
+  const btnPublishText = document.createTextNode(blog.published ? "unpublish" : "publish");
   const topicNode = document.createElement("small");
   blog.topic.forEach((element, index) => {
     const topictext = document.createTextNode(index === 0? element.name : ", " + element.name);
@@ -83,18 +85,23 @@ const createArticleCard = (blog, related) => {
   btn.type = "button";
   btn.className = "btn btn-sm btn-outline-secondary";
   btn.id = "" + blog.id;
-  // btn.setAttribute("onclick", "handleBtnClick(this.id)");
   btn.addEventListener('click', () => handleBtnClick(blog.id));
   btn.appendChild(btntext);
   btndel.type = "button";
   btndel.className = "btn btn-sm btn-outline-secondary";
   btndel.id = "del" + blog.id;
-  btndel.setAttribute("onclick", "handleBtnDel(this.id)");
+  btndel.addEventListener('click', () => handleBtnDel(blog.id));
   btndel.appendChild(btndeltext);
+  btnPublish.type = "button";
+  btnPublish.className = "btn btn-sm btn-outline-secondary"
+  btnPublish.id = "pub" + blog.id;
+  btnPublish.addEventListener('click', () => handleBtnPublish(blog.id, !blog.published));
+  btnPublish.appendChild(btnPublishText);
   topicNode.className = "text-muted";
   topicNode.id = "topic" + blog.id;
   divBtn.appendChild(btn);
   divBtn.appendChild(btndel);
+  divBtn.appendChild(btnPublish);
   divBtnGroup.appendChild(divBtn);
   divBtnGroup.appendChild(topicNode);
   cardBody.appendChild(articleName);
@@ -121,6 +128,24 @@ const handleBtnClick = (id) => {
   getServer(getUrl("lfvBlogAPI") + "/id/" + id, true, true);
 };
 
+const handleBtnPublish = (id, publish) => {
+  const url = getUrl("lfvBlogAPI") + "/publish/" + id
+  const formData = JSON.stringify(publish);
+  let csrfToken = getCookie("XSRF-TOKEN");
+  fetch(url, {
+    headers: {
+      "X-XSRF-TOKEN": csrfToken,
+      "content-type": "application/json"
+    },
+    method: "PUT",
+    body: formData,
+  }).then(res => {
+    if(res.ok) {
+      document.getElementById("pub" + id).firstChild.textContent = publish ? "unpublish" : "publish";
+      // document.getElementById("pub" + id).appendChild(document.createTextNode(publish ? "unpublish" : "publish"));
+    }
+  })
+}
 const getArticle = () => {
   const pathVariables = window.location.pathname.split("/");
   getServer(
@@ -131,8 +156,7 @@ const getArticle = () => {
 };
 
 const handleBtnDel = (id) => {
-  const urlId = id.replace("del", "");
-  const url = "/admin/blog/" + urlId;
+  const url = "/admin/blog/" + id;
   let csrfToken = getCookie("XSRF-TOKEN");
   const postConfigs = {
     headers: {
