@@ -22,28 +22,14 @@ const getServer = (url, isArticle, hide) => {
           let pathVariables = window.location.pathname.split("/");
           if (pathVariables[2] != blog.id) {
             if (blog) {
-              window.getElementById("related").innerHTML =
+              document.getElementById("related").innerHTML =
                 "Get related articles";
             }
-            createArticleCard(
-              blog.imgURL,
-              blog.name,
-              blog.topic,
-              blog.description,
-              blog.id
-            );
+            createArticleCard(blog, true);
           }
         });
       } else {
-        result.blog.map((blog) => {
-          createArticleCard(
-            blog.imgURL,
-            blog.name,
-            blog.topic,
-            blog.description,
-            blog.id
-          );
-        });
+        result.blog.map((blog) => createArticleCard(blog));
       }
       return result;
     } catch (error) {
@@ -53,15 +39,15 @@ const getServer = (url, isArticle, hide) => {
   return data;
 };
 
-const createArticleCard = (imgURL, title, topic, description, id) => {
-  const currentDiv = document.getElementById("articlesContainer");
+const createArticleCard = (blog, related) => {
+  const currentDiv = document.getElementById(related ? "related" : "articlesContainer");
   const div = document.createElement("div");
   const card = document.createElement("div");
   const cardImage = document.createElement("img");
   const cardBody = document.createElement("div");
   const articleName = document.createElement("strong");
   const cardText = document.createElement("p");
-  const text = document.createTextNode(description);
+  const text = document.createTextNode(blog.description);
   const divBtnGroup = document.createElement("div");
   const divBtn = document.createElement("div");
   const btn = document.createElement("button");
@@ -69,13 +55,14 @@ const createArticleCard = (imgURL, title, topic, description, id) => {
   const btndel = document.createElement("button");
   const btndeltext = document.createTextNode("Delete");
   const topicNode = document.createElement("small");
-  topic.forEach((element, index) => {
+  blog.topic.forEach((element, index) => {
     const topictext = document.createTextNode(index === 0? element.name : ", " + element.name);
     topicNode.appendChild(topictext);
   });
   div.className = "col";
   card.className = "card shadow-sm";
   cardImage.className = "bd-placeholder-img card-img-top";
+  const imgURL = blog.imgURL;
   if (!imgURL || imgURL === "null" || imgURL === "undefined") {
     cardImage.src =
       "https://res.cloudinary.com/mesmusiq-entertainment/image/upload/v1626255115/blogpictures/vjc0l0xva0jfv8bst051.jpg";
@@ -88,24 +75,24 @@ const createArticleCard = (imgURL, title, topic, description, id) => {
   cardImage.preserveAspectRatio = "xMidYMid slice";
   cardImage.focusable = "false";
   cardBody.className = "card-body";
-  articleName.innerHTML = title;
+  articleName.innerHTML = blog.name;
   cardText.className = "card-text";
   cardText.appendChild(text);
   divBtnGroup.className = "d-flex justify-content-between align-items-center";
   divBtn.className = "btn-group";
   btn.type = "button";
   btn.className = "btn btn-sm btn-outline-secondary";
-  btn.id = "" + id;
+  btn.id = "" + blog.id;
   // btn.setAttribute("onclick", "handleBtnClick(this.id)");
-  btn.addEventListener('click', () => handleBtnClick(id));
+  btn.addEventListener('click', () => handleBtnClick(blog.id));
   btn.appendChild(btntext);
   btndel.type = "button";
   btndel.className = "btn btn-sm btn-outline-secondary";
-  btndel.id = "del" + id;
+  btndel.id = "del" + blog.id;
   btndel.setAttribute("onclick", "handleBtnDel(this.id)");
   btndel.appendChild(btndeltext);
   topicNode.className = "text-muted";
-  topicNode.id = "topic" + id;
+  topicNode.id = "topic" + blog.id;
   divBtn.appendChild(btn);
   divBtn.appendChild(btndel);
   divBtnGroup.appendChild(divBtn);
@@ -118,12 +105,11 @@ const createArticleCard = (imgURL, title, topic, description, id) => {
   div.appendChild(card);
   currentDiv.appendChild(div);
 };
+
 //encodeURIComponent(string);
-const renderBlogArticle = (title, body, hide) => {
-  const heading = document.getElementById("title");
+const renderBlogArticle = (title, body) => {
+  document.title = title
   const article = document.getElementById("article");
-  const h1Text = document.createTextNode(title);
-  heading.appendChild(h1Text);
   article.innerHTML = body;
 };
 
@@ -132,9 +118,6 @@ const getArticles = () => {
 };
 
 const handleBtnClick = (id) => {
-  // const topicId = document.getElementById("topic" + id);
-  // topicUrl = encodeURIComponent(topicId.innerText);
-  // window.location.href = getUrl("lfvBlogAPI") + "/id/" + id;
   getServer(getUrl("lfvBlogAPI") + "/id/" + id, true, true);
 };
 
