@@ -94,4 +94,18 @@ public class Articles {
     public void setTopic(String topic) {
         this.topic = topic;
     }
+
+    @Override
+    public String toString() {
+        return """
+            {
+                name: %s,
+                id: %d,
+                imgURL: %s,
+                description: %s,
+                topic: %s,
+                fullArticle: %s
+            }
+        """.formatted(name, id, imgURL, description, topic, fullArticle);
+    }
 }
