@@ -40,6 +40,11 @@ spring:
           timeout: 5000
           starttls:
             enable: true
+  
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
 # Spring actuator configuration
 management:
   # Enable spring actuator to be accessible via web
