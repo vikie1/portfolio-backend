@@ -36,6 +36,7 @@ public class ControllerLinkService {
 
     //PUT Request
     public void putFullSoftwareDetailsUpdate(SoftwareAttributesPojo softwareAttributesPojo) {
+        if (softwareAttributesPojo == null) return;
         try {
             softwareService.updateSoftware(DeriveEntityFromPojo.constructSoftwareEntity(softwareAttributesPojo));
             categoryService.updateCategory(DeriveEntityFromPojo.createCategory(softwareAttributesPojo));
