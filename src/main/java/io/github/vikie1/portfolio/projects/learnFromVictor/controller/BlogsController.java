@@ -1,6 +1,5 @@
 package io.github.vikie1.portfolio.projects.learnFromVictor.controller;
 
-import io.github.vikie1.portfolio.articles.Articles;
 import io.github.vikie1.portfolio.projects.learnFromVictor.entity.Blogs;
 import io.github.vikie1.portfolio.projects.learnFromVictor.entity.dao.ApiData;
 import io.github.vikie1.portfolio.projects.learnFromVictor.service.BlogService;
@@ -9,12 +8,9 @@ import io.github.vikie1.portfolio.projects.learnFromVictor.util.BlogUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 @RestController @RequestMapping("/api/lfv")
 public class BlogsController {
@@ -54,21 +50,12 @@ public class BlogsController {
     //PUT
     @PutMapping("/blogs")
     public void updateBlog(ApiData.Blog blog){
-        // blogService.update(BlogUtil.retrieveBlog(blog));
-        String blogString = """
-            {
-                name: %s,
-                publishDate: some date,
-                imgURL: %s,
-                description: %s,
-                topic: %s,
-                fullArticle: %s
-            }
-        """.formatted(blog.name(), blog.imgURL(), blog.description(), blog.topics().length + Arrays.toString(blog.topics()), blog.post());
-        Logger.getLogger("Put Test").log(Level.INFO, blogString);
+        blogService.update(BlogUtil.retrieveBlog(blog));
     }
-    @PutMapping("/blogs/new")
-    public void updateBlogTest(Articles blog){Logger.getLogger("Put Test").log(Level.INFO, blog.toString());}
+    @PutMapping("/blogs/publish/{id}")
+    public void updateBlogTest(@PathVariable("id") long id, @RequestBody boolean publish){
+        blogService.publish(publish, id);
+    }
 
     //DELETE
     @DeleteMapping("/blogs/id/{id}")

@@ -77,6 +77,13 @@ public class BlogService {
         blog.setId(existing.getId());
         blogRepository.save(blog);
     }
+    @Async
+    public void publish(boolean publish, long id){
+        Blogs blog = blogRepository.findById(id).orElse(null);
+        if (blog == null) return;
+        blog.setPublished(publish);
+        blogRepository.save(blog);
+    }
 
     //DELETE
     @Async
