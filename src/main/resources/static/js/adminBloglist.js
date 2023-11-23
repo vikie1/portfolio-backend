@@ -1,4 +1,4 @@
-import { getUrl } from "./urls";
+import { getUrl } from "./urls.js";
 
 const getServer = (url, isArticle, hide) => {
   const abortController = new AbortController();
@@ -14,8 +14,8 @@ const getServer = (url, isArticle, hide) => {
       );
       if (isArticle) {
         renderBlogArticle(
-          result.blog[0].name,
-          result.blog[0].fullArticle,
+          result.current.name,
+          result.current.post,
           hide
         );
         result.related.map((blog) => {
@@ -69,7 +69,10 @@ const createArticleCard = (imgURL, title, topic, description, id) => {
   const btndel = document.createElement("button");
   const btndeltext = document.createTextNode("Delete");
   const topicNode = document.createElement("small");
-  const topictext = document.createTextNode(topic);
+  topic.forEach((element, index) => {
+    const topictext = document.createTextNode(index === 0? element.name : ", " + element.name);
+    topicNode.appendChild(topictext);
+  });
   div.className = "col";
   card.className = "card shadow-sm";
   cardImage.className = "bd-placeholder-img card-img-top";
@@ -93,7 +96,8 @@ const createArticleCard = (imgURL, title, topic, description, id) => {
   btn.type = "button";
   btn.className = "btn btn-sm btn-outline-secondary";
   btn.id = "" + id;
-  btn.setAttribute("onclick", "handleBtnClick(this.id)");
+  // btn.setAttribute("onclick", "handleBtnClick(this.id)");
+  btn.addEventListener('click', () => handleBtnClick(id));
   btn.appendChild(btntext);
   btndel.type = "button";
   btndel.className = "btn btn-sm btn-outline-secondary";
@@ -102,7 +106,6 @@ const createArticleCard = (imgURL, title, topic, description, id) => {
   btndel.appendChild(btndeltext);
   topicNode.className = "text-muted";
   topicNode.id = "topic" + id;
-  topicNode.appendChild(topictext);
   divBtn.appendChild(btn);
   divBtn.appendChild(btndel);
   divBtnGroup.appendChild(divBtn);
@@ -129,10 +132,10 @@ const getArticles = () => {
 };
 
 const handleBtnClick = (id) => {
-  const topicId = document.getElementById("topic" + id);
-  topicUrl = encodeURIComponent(topicId.innerText);
-  window.location.href = "/blog/" + id + "/" + topicUrl;
-  // getServer("/api/blog/" + id + "/" + topicUrl, true, true);
+  // const topicId = document.getElementById("topic" + id);
+  // topicUrl = encodeURIComponent(topicId.innerText);
+  window.location.href = getUrl("lfvBlogAPI") + "/id/" + id;
+  getServer(getUrl("lfvBlogAPI") + "/id/" + id, true, true);
 };
 
 const getArticle = () => {
@@ -173,3 +176,5 @@ const getCookie = (name) => {
   }
   return decodeURIComponent(csrfCookie[0].split("=")[1]);
 };
+
+document.body.onload = getArticles();
