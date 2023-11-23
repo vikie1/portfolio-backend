@@ -97,15 +97,14 @@
             </div>
             <input type="submit" value="Upload picture" name="submit" />
           </form>
-
           <p id="data"></p>
         </div>
         <form
           id="myForm"
           role="form"
-          th:action="@{/admin/blog/new}"
-          th:method="post"
-          th:object="${articles}"
+          th:action="@{/api/lfv/blogs}"
+          th:method="PUT"
+          th:object="${blog}"
         >
           <div>
             <input
@@ -131,21 +130,37 @@
           <div>
             <input
               type="text"
-              name="topic"
+              name="topicString"
+              id="topicsInput"
+              onkeyup="topicsToArray()"
+              placeholder="Enter the topic of your blog"
+            />
+            <script>
+              const topicsToArray = () => {
+                const topicsString = document.getElementById('topicsInput').value;
+                const topicsArray = topicsString.split(", ");
+                document.getElementById('topicInput').value = topicsArray
+                console.log(document.getElementById('topicInput').value, topicsArray)
+              }
+            </script>
+            <input
+              type="text"
+              name="topics"
               id="topicInput"
               placeholder="Enter the topic of your blog"
-              field="*{topic}"
+              field="*{topics}"
+              hidden
             />
           </div>
           <div>
             <textarea
-              name="fullArticle"
-              id="fullArticleInput"
+              name="post"
+              id="postInput"
               cols="150"
               rows="15"
               onkeyup="AutoGrowTextArea(this, this.id)"
               placeholder="This is where you type your blog post"
-              field="*{fullArticle}"
+              field="*{post}"
             ></textarea>
           </div>
           <div>
@@ -165,8 +180,7 @@
 
         <div class="main-cnt">
           <article id="article"></article>
-          <br /><br /><br />
-          <br />
+          <br /><br /><br /><br />
         </div>
       </div>
     </main>

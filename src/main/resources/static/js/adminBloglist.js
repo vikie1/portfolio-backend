@@ -65,7 +65,7 @@ const createArticleCard = (imgURL, title, topic, description, id) => {
   const divBtnGroup = document.createElement("div");
   const divBtn = document.createElement("div");
   const btn = document.createElement("button");
-  const btntext = document.createTextNode("Read");
+  const btntext = document.createTextNode("Edit");
   const btndel = document.createElement("button");
   const btndeltext = document.createTextNode("Delete");
   const topicNode = document.createElement("small");
@@ -134,7 +134,7 @@ const getArticles = () => {
 const handleBtnClick = (id) => {
   // const topicId = document.getElementById("topic" + id);
   // topicUrl = encodeURIComponent(topicId.innerText);
-  window.location.href = getUrl("lfvBlogAPI") + "/id/" + id;
+  // window.location.href = getUrl("lfvBlogAPI") + "/id/" + id;
   getServer(getUrl("lfvBlogAPI") + "/id/" + id, true, true);
 };
 
