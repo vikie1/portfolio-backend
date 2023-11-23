@@ -30,6 +30,7 @@ public class ControllerLinkService {
 //        }
 //        else categoryService.addCategory(DeriveEntityFromPojo.constructCategory(softwareAttributes).getCategory());
 //        typeService.addType(DeriveEntityFromPojo.constructTypeEntity(softwareAttributes));
+        if (softwareAttributes == null) return;
         softwareService.addSoftware(DeriveEntityFromPojo.constructSoftwareEntity(softwareAttributes));
     }
 
