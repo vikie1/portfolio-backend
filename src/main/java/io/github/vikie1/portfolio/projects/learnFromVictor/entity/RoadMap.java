@@ -21,7 +21,7 @@ public class RoadMap {
     private LocalDate postDate;
     @Column(length = Length.LOB_DEFAULT)
     private String explanation;
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.MERGE) @JoinColumn(name = "road_map_id")
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.MERGE) @JoinTable(joinColumns = @JoinColumn(name = "road_map_id"))
 	private Set<Topic> topics = new HashSet<>();
 
     public RoadMap() {}

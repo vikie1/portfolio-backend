@@ -18,7 +18,7 @@ public class CourseIdentifiers {
     private String imgURL;
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "courseId", cascade = CascadeType.ALL)
     Set<Course> courses;
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.MERGE) @JoinColumn(name = "course_identifiers_course_id")
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.MERGE) @JoinTable(joinColumns = @JoinColumn(name = "course_identifiers_course_id"))
     private Set<Topic> topic;
 
     public CourseIdentifiers() {}

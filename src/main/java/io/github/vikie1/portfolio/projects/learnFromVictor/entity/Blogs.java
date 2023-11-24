@@ -19,7 +19,7 @@ public class Blogs {
     private boolean published;
     @Column(length = Length.LOB_DEFAULT)
     private String post;
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.MERGE) @JoinColumn(name = "blogs_id")
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.MERGE) @JoinTable(joinColumns = @JoinColumn(name = "blogs_id"))
     private Set<Topic> topic;
 
     public Blogs() {}

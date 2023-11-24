@@ -22,9 +22,6 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: update
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect # makes Hibernate generate better SQL for the chosen database
 
   #mail sending api
   mail:
@@ -42,7 +39,7 @@ spring:
             enable: true
   
   mvc:
-    hiddenmethod:
+    hidden-method:
       filter:
         enabled: true
 # Spring actuator configuration
