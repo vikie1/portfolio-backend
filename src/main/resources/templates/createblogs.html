@@ -103,7 +103,7 @@
           id="myForm"
           role="form"
           th:action="@{/api/lfv/blogs}"
-          th:method="PUT"
+          th:method="${param.id == null} ? POST : PUT"
           th:object="${blog}"
         >
           <div>
