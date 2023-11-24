@@ -25,7 +25,6 @@ public class AdminController {
     @GetMapping(value = "")
     public String getAdminPanel() { return "admin"; }
     @GetMapping(value = "/signUp")  public String getSignup() { return "signup"; }
-    @GetMapping(value = "/blog/new") public String getNewBlogCreator() { return "createblogs"; }
     @GetMapping(value = "/projects/new") public String getNewProjectCreator() { return "create_projects"; }
     @GetMapping(value = "/betterdevs") public String getBetterDevs() { return "betterdevs"; }
     @GetMapping("/blog/edit") 
