@@ -11,6 +11,7 @@
     <title>Document</title>
     <script src="/js/autogrowtextfield.js"></script>
   </head>
+
   <body>
     <main>
       <div>
@@ -79,7 +80,10 @@
               >
             </li>
           </ul>
-          <strong>Note from development: Always use `aside` tag before `img` tag</strong>
+          <strong
+            >Note from development: Always use `aside` tag before `img`
+            tag</strong
+          >
         </div>
       </div>
       <div>
@@ -91,7 +95,7 @@
             id="uploadForm"
             onsubmit="handleFileSubmit(event)"
           >
-            <div style="border: solid; width: max-content;">
+            <div style="border: solid; width: max-content">
               <p>choose picture that will appear in blog preview</p>
               <input type="file" id="fileu" name="files[]" />
             </div>
@@ -108,9 +112,38 @@
         >
           <div>
             <input
+            type="text"
+              th:value="${param.id != null} ? ${blog.imgURL} : ''"
+              id="imgURL"
+              name="imgURL"
+              field="*{imgURL}"
+            />
+          </div>
+          <div>
+            <input
+              type="date"
+              th:value="${param.id != null} ? ${blog.postDate} : ''"
+              id="postDate"
+              name="postDate"
+              field="*{postDate}"
+            />
+          </div>
+          <div>
+            <label for="published">publish ?</label>
+            <input
+              type="checkbox"
+              th:checked="${param.id != null} ? ${blog.published} : ''"
+              id="published"
+              name="published"
+              field="*{published}"
+            />
+          </div>
+          <div>
+            <input
               type="text"
               name="name"
               id="nameInput"
+              th:value="${param.id != null} ? ${blog.name} : ''"
               onkeyup="populatePreviewH1(this.id)"
               placeholder="Enter blog name here"
               field="*{name}"
@@ -120,6 +153,7 @@
             <textarea
               name="description"
               id="descriptionInput"
+              th:text="${param.id != null} ? ${blog.description} : ''"
               cols="70"
               rows="10"
               onkeyup="AutoGrowTextArea(this)"
@@ -132,21 +166,27 @@
               type="text"
               name="topicString"
               id="topicsInput"
+              th:value="${param.id != null} ? ${#strings.setJoin(blog.topic, ', ')} : ''"
               onkeyup="topicsToArray()"
               placeholder="Enter the topic of your blog"
             />
             <script>
               const topicsToArray = () => {
-                const topicsString = document.getElementById('topicsInput').value;
+                const topicsString =
+                  document.getElementById("topicsInput").value;
                 const topicsArray = topicsString.split(", ");
-                document.getElementById('topicInput').value = topicsArray
-                console.log(document.getElementById('topicInput').value, topicsArray)
-              }
+                document.getElementById("topicInput").value = topicsArray;
+                console.log(
+                  document.getElementById("topicInput").value,
+                  topicsArray
+                );
+              };
             </script>
             <input
               type="text"
               name="topics"
               id="topicInput"
+              th:value="${param.id != null} ? ${#strings.setJoin(blog.topic, ',')} : ''"
               placeholder="Enter the topic of your blog"
               field="*{topics}"
               hidden
@@ -158,13 +198,11 @@
               id="postInput"
               cols="150"
               rows="15"
+              th:text="${param.id != null} ? ${blog.post} : ''"
               onkeyup="AutoGrowTextArea(this, this.id)"
               placeholder="This is where you type your blog post"
               field="*{post}"
             ></textarea>
-          </div>
-          <div>
-            <input type="hidden" id="imgURL" name="imgURL" field="*{imgURL}" />
           </div>
           <input
             type="hidden"
