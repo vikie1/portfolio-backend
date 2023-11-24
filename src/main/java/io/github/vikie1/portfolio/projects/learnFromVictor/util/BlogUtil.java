@@ -15,6 +15,7 @@ public class BlogUtil {
         Set<Topic> topics = new HashSet<>();
         for (String topic: rawBlog.topics()) topics.add(new Topic(topic));
         Blogs blog = new Blogs(rawBlog.name(), rawBlog.imgURL(), rawBlog.description(), rawBlog.publishDate(), rawBlog.post());
+        blog.setPublished(rawBlog.published());
         blog.setTopic(topics);
         return blog;
     }
