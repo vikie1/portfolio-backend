@@ -123,16 +123,16 @@
             <input
               type="date"
               th:value="${param.id != null} ? ${blog.postDate} : ''"
-              id="postDate"
-              name="postDate"
-              field="*{postDate}"
+              id="publishDate"
+              name="publishDate"
+              field="*{publishDate}"
             />
           </div>
           <div>
             <label for="published">publish ?</label>
             <input
               type="checkbox"
-              th:checked="${param.id != null} ? ${blog.published} : ''"
+              th:checked="${param.id != null} ? ${blog.published} : ${!blog.published}"
               id="published"
               name="published"
               field="*{published}"

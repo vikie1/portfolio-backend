@@ -8,7 +8,7 @@ public class ApiData{
           String imgURL,
           String description,
           LocalDate publishDate,
-          boolean published,
+          Boolean published,
           String[] topics,
           String post
     ){}
