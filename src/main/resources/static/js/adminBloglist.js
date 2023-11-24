@@ -63,6 +63,7 @@ const createArticleCard = (blog, related) => {
   });
   div.className = "col";
   card.className = "card shadow-sm";
+  card.style = "cursor: pointer;";
   cardImage.className = "bd-placeholder-img card-img-top";
   const imgURL = blog.imgURL;
   if (!imgURL || imgURL === "null" || imgURL === "undefined") {
@@ -85,17 +86,17 @@ const createArticleCard = (blog, related) => {
   btn.type = "button";
   btn.className = "btn btn-sm btn-outline-secondary";
   btn.id = "" + blog.id;
-  btn.addEventListener('click', () => handleBtnClick(blog.id));
+  btn.addEventListener('click', (e) => handleEditBtnClick(e, blog.id));
   btn.appendChild(btntext);
   btndel.type = "button";
   btndel.className = "btn btn-sm btn-outline-secondary";
   btndel.id = "del" + blog.id;
-  btndel.addEventListener('click', () => handleBtnDel(blog.id));
+  btndel.addEventListener('click', (e) => handleBtnDel(e, blog.id));
   btndel.appendChild(btndeltext);
   btnPublish.type = "button";
   btnPublish.className = "btn btn-sm btn-outline-secondary"
   btnPublish.id = "pub" + blog.id;
-  btnPublish.addEventListener('click', () => handleBtnPublish(blog.id, !blog.published));
+  btnPublish.addEventListener('click', (e) => handleBtnPublish(e, blog.id, !blog.published));
   btnPublish.appendChild(btnPublishText);
   topicNode.className = "text-muted";
   topicNode.id = "topic" + blog.id;
@@ -109,6 +110,7 @@ const createArticleCard = (blog, related) => {
   cardBody.appendChild(divBtnGroup);
   card.appendChild(cardImage);
   card.appendChild(cardBody);
+  card.addEventListener('click',  () => handleCardClick(blog.id));
   div.appendChild(card);
   currentDiv.appendChild(div);
 };
@@ -124,11 +126,16 @@ const getArticles = () => {
   getServer(getUrl("lfvBlogAPI"), false, false);
 };
 
-const handleBtnClick = (id) => {
+const handleCardClick = (id) => {
   getServer(getUrl("lfvBlogAPI") + "/id/" + id, true, true);
 };
 
-const handleBtnPublish = (id, publish) => {
+const handleEditBtnClick = (e, id) => {
+  e.stopPropagation();
+  window.open(getUrl("adminBlogEdit") + "?id=" + id, "_blank");
+}
+const handleBtnPublish = (e, id, publish) => {
+  e.stopPropagation();
   const url = getUrl("lfvBlogAPI") + "/publish/" + id
   const formData = JSON.stringify(publish);
   let csrfToken = getCookie("XSRF-TOKEN");
@@ -154,7 +161,8 @@ const getArticle = () => {
   );
 };
 
-const handleBtnDel = (id) => {
+const handleBtnDel = (e, id) => {
+  e.stopPropagation();
   const url = "/admin/blog/" + id;
   let csrfToken = getCookie("XSRF-TOKEN");
   const postConfigs = {
