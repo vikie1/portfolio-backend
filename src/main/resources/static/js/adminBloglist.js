@@ -142,7 +142,6 @@ const handleBtnPublish = (id, publish) => {
   }).then(res => {
     if(res.ok) {
       document.getElementById("pub" + id).firstChild.textContent = publish ? "unpublish" : "publish";
-      // document.getElementById("pub" + id).appendChild(document.createTextNode(publish ? "unpublish" : "publish"));
     }
   })
 }
