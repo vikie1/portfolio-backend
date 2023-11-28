@@ -14,11 +14,11 @@ public class Topic {
     @Column(nullable = false, unique = true)
     private String name;
     @ManyToMany(mappedBy = "topic", cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
-    Set<Blogs> blogs;
+    private Set<Blogs> blogs;
     @ManyToMany(mappedBy = "topic", cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
-    Set<CourseIdentifiers> courseIdentifiers;
+    private Set<CourseIdentifiers> courseIdentifiers;
     @ManyToMany(mappedBy = "topics", cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
-    Set<RoadMap> roadMaps;
+    private Set<RoadMap> roadMaps;
 
     @JsonIgnore
     public Set<RoadMap> getRoadMaps() {

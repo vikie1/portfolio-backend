@@ -24,7 +24,7 @@ public class CourseService {
     @Autowired
     private TopicsRepository topicsRepository;
     @Autowired
-    CourseIdRepository courseIdRepository;
+    private CourseIdRepository courseIdRepository;
 
     //CREATE
     @Async
